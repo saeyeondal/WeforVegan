@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity ="center"
+        android:fillViewport="true"
+        android:layout_marginTop="0dp"
+        android:id="@+id/scrollView">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+    <TextView
+        android:layout_width="140dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/rec_circle"
+        android:backgroundTint="@color/colorBlueGreen"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:text="오늘의 추천 식단"
+        android:textColor="@color/colorWhite"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"/>
+
+    <GridLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:rowCount="4"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/imageView_rice"
+            android:layout_width="170dp"
+            android:layout_height="116dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            app:srcCompat="@drawable/rice" />
+
+        <TextView
+            android:id="@+id/textView_rice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_marginLeft="10dp"
+            android:text="현미밥"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:id="@+id/textView_rice_cal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_marginLeft="100dp"
+            android:text="200kcal" />
+
+        <ImageView
+            android:id="@+id/imageView_soup"
+            android:layout_width="170dp"
+            android:layout_height="116dp"
+            android:layout_row="0"
+            android:layout_column="1"
+            app:srcCompat="@drawable/soup" />
+
+        <TextView
+            android:id="@+id/textView_soup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_marginLeft="10dp"
+            android:text="미역국"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:id="@+id/textView_soup_cal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_marginLeft="100dp"
+            android:text="100kcal" />
+
+        <ImageView
+            android:id="@+id/imageView_sidedish1"
+            android:layout_width="170dp"
+            android:layout_height="116dp"
+            android:layout_row="2"
+            android:layout_column="0"
+            app:srcCompat="@drawable/side_dish1" />
+
+        <TextView
+            android:id="@+id/textView_sidedish1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:layout_marginLeft="10dp"
+            android:text="달걀 스크램블"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:id="@+id/textView_sidedish1_cal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:layout_marginLeft="100dp"
+            android:text="110kcal" />
+
+        <ImageView
+            android:id="@+id/imageView_sidedish2"
+            android:layout_width="170dp"
+            android:layout_height="116dp"
+            android:layout_row="2"
+            android:layout_column="1"
+            app:srcCompat="@drawable/side_dish2" />
+
+        <TextView
+            android:id="@+id/textView_sidedish2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:layout_marginLeft="10dp"
+            android:text="열무 김치"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:id="@+id/textView_sidedish2_cal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:layout_marginLeft="100dp"
+            android:text="10kcal" />
+    </GridLayout>
+
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rec_circle"
+        android:backgroundTint="@color/colorOrange"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:text="칼로리 정보"
+        android:textColor="@color/colorWhite"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="총 430kcal"
+        android:textColor="@color/colorBlack"/>
+
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rec_circle"
+        android:backgroundTint="@color/colorOrange"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:text="필수 영양 정보"
+        android:textColor="@color/colorWhite"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/carbo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="탄수화물\n30.4%"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/small_circle" />
+
+
+        <Button
+            android:id="@+id/protein"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="단백질\n40.8%"
+            android:background="@drawable/small_circle"
+            android:layout_marginRight="20dp"/>
+
+        <Button
+            android:id="@+id/fat"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="지방\n15.4%"
+            android:background="@drawable/small_circle"
+            android:layout_marginRight="20dp"/>
+
+        <Button
+            android:id="@+id/vitamin"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="무기질\n3.9%"
+            android:background="@drawable/small_circle"/>
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="170dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rec_circle"
+        android:backgroundTint="@color/colorGreen"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:text="식단과 연관된 레시피"
+        android:textColor="@color/colorWhite"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+            <Button
+                android:id="@+id/show_recipe1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="미역국 레시피 보러가기" />
+
+            <Button
+                android:id="@+id/show_recipe2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="열무 김치 레시피 보러가기" />
+
+            <Button
+                android:id="@+id/show_recipe3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="달걀 스크램블 레시피 보러가기" />
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

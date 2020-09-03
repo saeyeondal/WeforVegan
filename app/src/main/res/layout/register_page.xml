@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="We for Vegan"
+            android:textSize = "26dp"
+            android:textColor="@color/colorGreen"
+            android:textStyle="bold"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGray"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/rec_circle"
+                android:backgroundTint="@color/colorGreen"
+                android:gravity="center"
+                android:text="회원님의 기본정보를 입력해주세요"
+                android:textColor="@android:color/white" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rec_circle"
+                    android:backgroundTint="@color/colorOrange"
+                    android:text="아이디"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/register_page_id"
+                    android:layout_width="150dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="18dp"
+                    android:background="@drawable/rec_box"
+                    android:ems="8"
+                    android:textAlignment="center"
+                    android:hint=" 10-20자 이내 "
+                    android:inputType="textPersonName"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorBlack"
+                    android:paddingLeft="10dp"/>
+
+                <Button
+                    android:id="@+id/id_check"
+                    android:layout_width="70dp"
+                    android:layout_height="33dp"
+                    android:layout_marginLeft="18dp"
+                    android:background="@drawable/rec_circle"
+                    android:backgroundTint="@color/colorGray"
+                    android:gravity="center"
+                    android:text="중복확인"
+                    android:textColor="@android:color/white"
+                    android:textSize="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="382dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rec_circle"
+                    android:backgroundTint="@color/colorOrange"
+                    android:text="비밀번호"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/register_page_password"
+                    android:layout_width="200dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/rec_box"
+                    android:ems="8"
+                    android:hint="10자 이상으로 입력해주세요"
+                    android:textAlignment="center"
+                    android:inputType="textPassword"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="98dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rec_circle"
+                    android:backgroundTint="@color/colorOrange"
+                    android:text="비밀번호 확인"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/register_page_password_check"
+                    android:layout_width="200dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="18dp"
+                    android:background="@drawable/rec_box"
+                    android:ems="8"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rec_circle"
+                    android:backgroundTint="@color/colorOrange"
+                    android:text="성별"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/register_page_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="여자"
+                        android:textColor="@color/colorBlack"
+                        android:buttonTint="@color/colorGray"/>
+
+                    <RadioButton
+                        android:id="@+id/register_page_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="남자"
+                        android:textColor="@color/colorBlack"
+                        android:buttonTint="@color/colorGray"/>
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rec_circle"
+                    android:backgroundTint="@color/colorOrange"
+                    android:text="나이"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                //드롭다운 박스 내용 -> age_array.xml
+                <!-- 나중에 드롭박스 내용을 생년으로 수정할 예정-->
+
+                <Spinner
+                    android:id="@+id/register_page_spinner_age"
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="20dp"
+                    android:backgroundTint="@color/colorBlack"
+                    android:focusableInTouchMode="true"
+                    android:overlapAnchor="false"
+                    android:popupBackground="#F3E0E0E0"
+                    android:spinnerMode="dropdown"
+                    android:textColor="@color/colorBlack"
+                    android:visibility="visible"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="382dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rec_circle"
+                    android:backgroundTint="@color/colorOrange"
+                    android:text="이메일"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/register_email"
+                    android:layout_width="230dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/rec_box"
+                    android:ems="8"
+                    android:inputType="textPassword"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp" />
+            </LinearLayout>
+                <Button
+                    android:id="@+id/email_check"
+                    android:layout_width="80dp"
+                    android:layout_height="33dp"
+                    android:layout_marginLeft="260dp"
+                    android:background="@drawable/rec_circle"
+                    android:backgroundTint="@color/colorGray"
+                    android:gravity="center"
+                    android:text="인증 메일 발송"
+                    android:textColor="@android:color/white"
+                    android:textSize="10dp" />
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="80dp"
+                android:background="@drawable/rec_circle"
+                android:backgroundTint="@color/colorGreen"
+                android:text="회원님의 채식 스타일을 선택해주세요"
+                android:textColor="@android:color/white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/vegan1_1"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:text="비건\n채식"
+                        android:background="@drawable/rec_circle"
+                        android:backgroundTint="@color/colorGray"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/vegan1_2"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:text="비건\n채식"
+                        android:background="@drawable/rec_circle"
+                        android:backgroundTint="@color/colorOrange"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <ImageView
+                    android:id="@+id/vegetable_only1"
+                    android:paddingTop="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/vegetable" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/vegan2_1"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:text="락토\n채식"
+                        android:background="@drawable/rec_circle"
+                        android:backgroundTint="@color/colorGray"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/vegan2_2"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:text="락토\n채식"
+                        android:background="@drawable/rec_circle"
+                        android:backgroundTint="@color/colorOrange"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+                <ImageView
+                    android:id="@+id/vegetable_only2"
+                    android:paddingTop="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/vegetable" />
+
+                <ImageView
+                    android:id="@+id/milk1"
+                    android:paddingTop="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/milk" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/vegan3_1"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:text="오보\n채식"
+                        android:background="@drawable/rec_circle"
+                        android:backgroundTint="@color/colorGray"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/vegan3_2"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:text="오보\n채식"
+                        android:background="@drawable/rec_circle"
+                        android:backgroundTint="@color/colorOrange"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+                <ImageView
+                    android:id="@+id/vegetable_only3"
+                    android:paddingTop="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/vegetable" />
+
+                <ImageView
+                    android:id="@+id/egg1"
+                    android:paddingTop="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/egg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/vegan4_1"
+                        android:paddingTop="5dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:text="락토 오보\n채식"
+                        android:background="@drawable/rec_circle"
+                        android:backgroundTint="@color/colorGray"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/vegan4_2"
+                        android:paddingTop="5dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:text="락토 오보\n채식"
+                        android:background="@drawable/rec_circle"
+                        android:backgroundTint="@color/colorOrange"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <ImageView
+                    android:id="@+id/vegetable_only4"
+                    android:paddingTop="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/vegetable" />
+
+                <ImageView
+                    android:id="@+id/milk2"
+                    android:paddingTop="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/milk" />
+
+                <ImageView
+                    android:id="@+id/egg2"
+                    android:paddingTop="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/egg" />
+            </LinearLayout>
+
+            <!--<LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/vegan5_1"
+                        android:paddingTop="5dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:text="패스코\n채식"
+                        android:background="@drawable/rec_circle"
+                        android:backgroundTint="@color/colorGray"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/vegan5_2"
+                        android:paddingTop="5dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:text="패스코\n채식"
+                        android:background="@drawable/rec_circle"
+                        android:backgroundTint="@color/colorOrange"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:visibility="invisible"/>
+                </FrameLayout>
+
+                <ImageView
+                    android:id="@+id/vegetable_only5"
+                    android:paddingTop="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/vegetable" />
+
+                <ImageView
+                    android:id="@+id/milk3"
+                    android:paddingTop="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/milk" />
+
+                <ImageView
+                    android:id="@+id/egg3"
+                    android:paddingTop="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/egg" />
+
+                <ImageView
+                    android:id="@+id/fish1"
+                    android:paddingTop="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/fish" />
+            </LinearLayout>-->
+
+            <Button
+                android:id="@+id/register"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/colorBlack"
+                android:background="@drawable/rec_circle"
+                android:backgroundTint="@color/colorLightGray"
+                android:text="회원 가입 하기"
+                android:textSize="15dp"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

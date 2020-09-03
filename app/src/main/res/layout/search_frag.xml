@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:id="@+id/search_frag"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+    <!--크기 조금 크게 함-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:id="@+id/search_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search_img"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"/>
+
+        <EditText
+            android:id="@+id/search_text"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/search_img"
+            android:layout_toLeftOf="@id/search_btn"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/rec_box"
+            android:hint="먹고 싶은 요리를 검색하세요!"
+            android:textColorHint="@color/colorLightGray"
+            android:inputType="text"
+            android:textColor="@color/colorBlack"
+            android:textSize="15dp"
+            android:paddingLeft="10dp" />
+
+        <Button
+            android:id="@+id/search_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="5dp"
+            android:gravity="center"
+            android:text="검색"
+            android:textColor="@color/colorBlack"
+            android:textSize="13dp" />
+    </RelativeLayout>
+    <!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/rec_circle"
+            android:backgroundTint="@color/colorOrange"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="대체 가능 재료"
+            android:textColor="@color/colorWhite"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/replacement_list"
+            android:layout_width="140dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="대체 가능 재료 리스트"
+            android:textColor="@color/colorBlack"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+    </LinearLayout>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/menu_recyclerView"/>
+    </LinearLayout>
+</LinearLayout>

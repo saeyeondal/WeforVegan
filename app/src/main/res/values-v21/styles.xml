@@ -1,0 +1,22 @@
+<resources>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+       <!-- <item name="toolbarStyle">@style/ToolbarStyle.Dark</item>-->
+    </style>
+<!--
+    <style name="ToolbarStyle.Dark" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/colorWhite</item>
+        <item name="titleTextAppearance">@style/ToolbarTitleStyle.Dark</item>
+        <item name="android:layout_gravity"> center </item>
+    </style>
+
+    <style name="ToolbarTitleStyle.Dark" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">23dp</item>
+        <item name="android:textColor">@color/colorGreen</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>-->
+</resources>
