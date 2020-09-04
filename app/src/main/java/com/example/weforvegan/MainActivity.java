@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     RequestFrag requestFrag;
     RecommendFrag recommendFrag;
     AddRequestFrag addRequestFrag;
+    LikeRecipePage likeRecipePage;
     DrawerLayout drawer;
     Toolbar toolbar;
     private AppBarConfiguration mAppBarConfiguration;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         requestFrag = new RequestFrag();
         recommendFrag = new RecommendFrag();
         addRequestFrag = new AddRequestFrag();
+        likeRecipePage = new LikeRecipePage();
 
         if(savedInstanceState == null)
             navigationView.getMenu().performIdentifierAction(R.id.nav_search, 0);
@@ -85,6 +87,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             curFragment = mypageFrag;
         else if( position == 4)
             curFragment = requestFrag;
+        else if( position == 5)
+            curFragment = likeRecipePage;
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container, curFragment).commit();
     }
@@ -123,8 +127,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if(id == R.id.nav_request)
             onFragmentSelected(4, null);
         else if(id == R.id.nav_like){
-            Intent intent = new Intent(this,LikeRecipePage.class); //파라메터는 현재 액티비티, 전환될 액티비티
-            startActivity(intent); //엑티비티 요청
+            onFragmentSelected(5, null);
         }
         else if(id == R.id.nav_logout){
             Intent intent = new Intent(this, LoginPage.class); //파라메터는 현재 액티비티, 전환될 액티비티

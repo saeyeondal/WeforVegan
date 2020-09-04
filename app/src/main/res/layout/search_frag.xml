@@ -49,47 +49,41 @@
             android:textColor="@color/colorBlack"
             android:textSize="13dp" />
     </RelativeLayout>
-    <!--
-    <LinearLayout
+    <TabHost
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="140dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/rec_circle"
-            android:backgroundTint="@color/colorOrange"
-            android:layout_gravity="center_vertical"
-            android:gravity="center"
-            android:text="대체 가능 재료"
-            android:textColor="@color/colorWhite"
-            android:textSize="16dp"
-            android:textStyle="bold" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/replacement_list"
-            android:layout_width="140dp"
-            android:layout_height="20dp"
-            android:layout_marginLeft="15dp"
-            android:layout_gravity="center_vertical"
-            android:gravity="center"
-            android:text="대체 가능 재료 리스트"
-            android:textColor="@color/colorBlack"
-            android:textSize="13dp"
-            android:textStyle="bold" />
-    </LinearLayout>-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <androidx.recyclerview.widget.RecyclerView
+        android:layout_height="match_parent"
+        android:id="@+id/th">
+        <TabWidget
+            android:id="@android:id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/menu_recyclerView"/>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:background="@color/colorLightGray"/>
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:paddingTop="70sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/general_recipe"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/general_recyclerView"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/sns_recipe"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/sns_recyclerView"/>
+            </LinearLayout>
+        </FrameLayout>
+    </TabHost>
 </LinearLayout>

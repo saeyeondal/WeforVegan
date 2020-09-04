@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TabHost;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.tabs.TabLayout;
 
 public class SearchFrag extends Fragment {
     static final MenuAdapter adapter = new MenuAdapter();
@@ -27,12 +30,28 @@ public class SearchFrag extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.search_frag, container, false);
         searchText = (TextView)rootView.findViewById(R.id.search_text);
         searchBtn = (Button)rootView.findViewById(R.id.search_btn);
-        final RecyclerView recyclerView = rootView.findViewById(R.id.menu_recyclerView);
+        TabHost th = (TabHost)rootView.findViewById(R.id.th);
+        th.setup();
+        TabHost.TabSpec ts1 = th.newTabSpec("Tab1");
+        ts1.setIndicator("일반레시피");
+        ts1.setContent(R.id.general_recipe);
+        th.addTab(ts1);
+        TabHost.TabSpec ts2 = th.newTabSpec("Tab2");
+        ts2.setIndicator("SNS 레시피");
+        ts2.setContent(R.id.sns_recipe);
+        th.addTab(ts2);
+        th.setCurrentTab(0);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        final RecyclerView gen_recyclerView = rootView.findViewById(R.id.general_recyclerView);
+        final RecyclerView sns_recyclerView = rootView.findViewById(R.id.sns_recyclerView);
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), new LinearLayoutManager(getActivity()).getOrientation());
-        recyclerView.addItemDecoration(dividerItemDecoration);
+        gen_recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(gen_recyclerView.getContext(), new LinearLayoutManager(getActivity()).getOrientation());
+        gen_recyclerView.addItemDecoration(dividerItemDecoration);
+
+        sns_recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        DividerItemDecoration dividerItemDecoration2 = new DividerItemDecoration(sns_recyclerView.getContext(), new LinearLayoutManager(getActivity()).getOrientation());
+        sns_recyclerView.addItemDecoration(dividerItemDecoration2);
 
         searchText.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -54,7 +73,8 @@ public class SearchFrag extends Fragment {
                     adapter.addItem(new Menu("2그릇 순삭 가능!! 간단하게 매콤 잡채 만드는 법, 별미 잡채, 잡채밥, 채식", "만개의 레시피"));
                     adapter.addItem(new Menu("[비건채식] 잡채", "만개의 레시피"));
                 }
-                recyclerView.setAdapter(adapter);
+                gen_recyclerView.setAdapter(adapter);
+                sns_recyclerView.setAdapter(adapter);
             }
         });
 
