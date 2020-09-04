@@ -8,22 +8,26 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-public class RecipeFrag extends Fragment {
+public class RecipeFrag extends AppCompatActivity {
     private WebView wv;
+    Button closeBtn;
     static String selectedMenu;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.recipe_frag, container, false);
-        wv = (WebView)rootView.findViewById(R.id.wv);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.recipe_frag);
+        closeBtn = (Button)findViewById(R.id.close_btn);
+        wv = findViewById(R.id.wv);
         WebSettings webSettings = wv.getSettings();
         webSettings.setJavaScriptEnabled(true);
         wv.setWebViewClient(new WebViewClient());
@@ -39,7 +43,16 @@ public class RecipeFrag extends Fragment {
                 break;
         }
 
+        closeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+    }
 
-        return rootView;
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

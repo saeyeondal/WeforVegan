@@ -93,9 +93,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         switch (index) {
-            case 0:
-                transaction.replace(R.id.container, recipeFrag);
-                break;
             case 1:
                 transaction.replace(R.id.container, resultFrag);
                 break;
