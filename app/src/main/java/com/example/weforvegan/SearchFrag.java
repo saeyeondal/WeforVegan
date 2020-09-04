@@ -1,5 +1,6 @@
 package com.example.weforvegan;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -63,8 +64,8 @@ public class SearchFrag extends Fragment {
                 Menu item = adapter.getItem(position);
                 RecipeFrag.selectedMenu = item.getMenu();
                 //가게 이름: item.getName(), 해시태그 내용: item.getHashtag()
-                MainActivity mainActivity = (MainActivity)getActivity();
-                mainActivity.onFragmentChanged(0);
+                Intent intent = new Intent(getActivity(), RecipeFrag.class); //파라메터는 현재 액티비티, 전환될 액티비티
+                startActivity(intent); //엑티비티 요청
             }
         });
 
