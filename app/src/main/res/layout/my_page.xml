@@ -96,6 +96,34 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="15dp" />
         </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="28dp"
+                android:background="@drawable/rec_circle"
+                android:backgroundTint="@color/colorOrange"
+                android:text="비밀번호 확인"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:layout_marginLeft="15dp"/>
+
+            <EditText
+                android:layout_width="200dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="18dp"
+                android:background="@drawable/rec_box"
+                android:ems="8"
+                android:textAlignment="center"
+                android:hint=""
+                android:inputType="textPassword"
+                android:textColor="@color/colorBlack"
+                android:textSize="15dp" />
+        </LinearLayout>
     </LinearLayout>
     <TextView
         android:layout_width="100dp"
@@ -259,6 +287,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginRight="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
             android:text="수정하기" />
     </LinearLayout>
 </LinearLayout>
