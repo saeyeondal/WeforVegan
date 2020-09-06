@@ -1,14 +1,14 @@
 import tweepy
 
 # 트위터 앱의 Keys and Access Tokens 탭 참조(자신의 설정 값을 넣어준다)
-consumer_key = 'QngRSRbxMEPDisG3aNodxh5vJ'
-consumer_secret = 'hloMOXz9xtAR3XJxxISoBNdOJSdP8otEYu7n6SQEv8RwfAcKub'
+consumer_key = ''
+consumer_secret = ''
 
 # 1. 인증요청(1차) : 개인 앱 정보 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 
-access_token = '1302255191052304384-NfWUxPx7dStMMA3q4u4J1lPToZ1H3k'
-access_token_secret= 'rcxbVQm6cs98oTwxOVYw5foMJ03cp7poC6dANmk4PJ1sB'
+access_token = ''
+access_token_secret= ''
 
 # 2. access 토큰 요청(2차) - 인증요청 참조변수 이용
 auth.set_access_token(access_token, access_token_secret)
