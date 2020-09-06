@@ -68,3 +68,5 @@ for i in setList :
         g.write(j+",")
     g.write('\n')
 g.close()
+
+
