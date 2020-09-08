@@ -6,6 +6,8 @@ import urllib.request
 import re
 from nltk.tokenize.regexp import regexp_tokenize
 
+cList = open('나라이름.txt', 'r', encoding='UTF8').read().split('\n')
+
 # 토크나이저
 def rawToken(raw, rawSet):
     # 특수문자(-제외)를 구분자로
@@ -25,6 +27,26 @@ def setUpdate(rawSet, remove, add) :
     except:
         return
 
+#나라, 나라~산 삭제
+def deleteToken(raw, rawSet):
+
+    findc=[]
+    
+    for j in range(len(cList)):
+        p = re.compile(
+            f'(\({cList[j]}산?\))|' + f'(\({cList[j]}산?/.*?\))|' + f'(\(.*?/{cList[j]}산?\))|' + f'(\(.*?/{cList[j]}산?/.*?\))')
+        if cList[j] in raw:
+            q = re.sub(p, "", raw)
+            findc.append(q)
+            raw = q
+        else:
+            findc.append(0)
+            continue
+        
+    print(findc[-1])
+    rawSet1.add(findc[-1])        
+    return rawSet1
+
 # db에서 성분 가져오기
 g = open("db_raw.txt","r",encoding='UTF8')
 # 중복 제거 위해 set으로
@@ -34,7 +56,8 @@ while True:
     wordList = g.readline()
     if not wordList :
         break
-    rawToken(wordList, rawSet)
+    deleteToken(wordList, rawSet1)
+    rawToken(rawSet1, rawSet)
     ''' 테스트 범위 설정
     if cnt > 100 :
         break
@@ -47,8 +70,6 @@ setUpdate(rawSet,'\'-이노신산이나트륨','5\'-이노신산이나트륨')
 setUpdate(rawSet,'그린색소PKS-','그린색소PKS-3')
 setUpdate(rawSet,'인절미맛시즈닝JM-','인절미맛시즈닝JM-0920')
 setUpdate(rawSet,'그식물성분해단백-','식물성분해단백-1')
-
-# 원산지 처리 (나라이름 포함 시 삭제)
 
 
 
