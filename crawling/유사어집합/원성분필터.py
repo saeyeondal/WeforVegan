@@ -44,8 +44,8 @@ def deleteToken(raw, rawSet):
             continue
         
     print(findc[-1])
-    rawSet1.add(findc[-1])        
-    return rawSet1
+    rawSet.add(findc[-1])        
+    return rawSet
 
 # db에서 성분 가져오기
 g = open("db_raw.txt","r",encoding='UTF8')
@@ -56,8 +56,8 @@ while True:
     wordList = g.readline()
     if not wordList :
         break
-    deleteToken(wordList, rawSet1)
-    rawToken(rawSet1, rawSet)
+    deleteToken(wordList, rawSet)
+    rawToken(wordList, rawSet)
     ''' 테스트 범위 설정
     if cnt > 100 :
         break
