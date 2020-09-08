@@ -3,7 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from bs4 import BeautifulSoup
 import time
  
-path ="C:\\Users\\hailie\\Desktop\\last\\chromedriver.exe"
+path ="..\\chromedriver.exe"
 driver = webdriver.Chrome(path)
 
 number = 1
