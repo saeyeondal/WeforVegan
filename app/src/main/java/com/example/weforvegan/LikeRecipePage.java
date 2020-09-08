@@ -25,6 +25,7 @@ public class LikeRecipePage extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.likerecipe_page, container, false);
+        System.out.println("hi");
 
         return rootView;
     }
