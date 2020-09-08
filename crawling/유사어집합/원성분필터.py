@@ -17,6 +17,7 @@ def rawToken(raw, rawSet):
             rawSet.add(t2[0])
     return rawSet
 
+# 특수한 경우 처리
 def setUpdate(rawSet, remove, add) :
     try:
         rawSet.remove(remove)
