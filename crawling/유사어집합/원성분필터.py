@@ -36,7 +36,6 @@ while True:
     wordList = g.readline()
     if not wordList :
         break
-    deleteToken(wordList, rawSet)
     rawToken(wordList, rawSet)
     ''' 테스트 범위 설정
     if cnt > 100 :
