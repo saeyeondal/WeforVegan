@@ -6,7 +6,6 @@ import urllib.request
 import re
 from nltk.tokenize.regexp import regexp_tokenize
 
-cList = open('나라이름.txt', 'r', encoding='UTF8').read().split('\n')
 
 # 토크나이저
 def rawToken(raw, rawSet):
@@ -27,28 +26,9 @@ def setUpdate(rawSet, remove, add) :
     except:
         return
 
-#나라, 나라~산 삭제
-def deleteToken(raw, rawSet):
-
-    findc=[]
-    
-    for j in range(len(cList)):
-        p = re.compile(
-            f'(\({cList[j]}산?\))|' + f'(\({cList[j]}산?/.*?\))|' + f'(\(.*?/{cList[j]}산?\))|' + f'(\(.*?/{cList[j]}산?/.*?\))')
-        if cList[j] in raw:
-            q = re.sub(p, "", raw)
-            findc.append(q)
-            raw = q
-        else:
-            findc.append(0)
-            continue
-        
-    print(findc[-1])
-    rawSet.add(findc[-1])        
-    return rawSet
 
 # db에서 성분 가져오기
-g = open("db_raw.txt","r",encoding='UTF8')
+g = open(".\\나라이름제거\\db_set.txt","r",encoding='UTF8')
 # 중복 제거 위해 set으로
 rawSet = set()
 cnt = 0
