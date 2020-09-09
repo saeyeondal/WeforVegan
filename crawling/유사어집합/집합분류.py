@@ -22,13 +22,13 @@ def textData(readData):
     text = re.sub('[-=+,#/\?:^$.@*\"※~&%ㆍ!』\\‘|\(\)\[\]\<\>`\'…》\\n]', '', readData)
     return text
 
-path ="C:\\Users\\hailie\\Desktop\\weforvegan\\크롤링\\chromedriver.exe"
+path ="..\\chromedriver.exe"
 driver = webdriver.Chrome(path)
 
 url = 'https://opendict.korean.go.kr/search/searchResult?focus_name=query&query='
 
 # 검색할 성분 키워드 모아놓은 txt
-g = open("C:\\Users\\hailie\\Desktop\\git\\WeforVegan\\crawling\\유사어집합\\원성분.txt","r")
+g = open("원성분.txt","r")
 wordList = g.readlines()
 setList = []
 
@@ -62,7 +62,7 @@ for n in wordList :
     #    break
     #count += 1
 
-g = open("분류.txt","w")
+g = open("집합분류.txt","w")
 for i in setList :
     for j in i :
         g.write(j+",")
