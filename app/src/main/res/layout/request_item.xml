@@ -1,54 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="50dp">
-    <LinearLayout
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/request"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:orientation="vertical">
+        android:layout_marginLeft="10dp"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="REPLY_STATE"
+            android:textColor="@color/colorBlack"
+            android:background="@color/colorLightGray"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="REQUEST_TITLE"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/state"
+            android:layout_toLeftOf="@+id/show_reply"
+            android:textColor="@color/colorBlack"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/request_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/request">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/lc_reply"
             android:layout_marginLeft="10dp"
-            android:gravity="center_vertical">
-            <TextView
-                android:id="@+id/state"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="REPLY_STATE"
-                android:textColor="@color/colorBlack"
-                android:background="@color/colorLightGray"/>
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="REQUEST_TITLE"
-                android:layout_marginLeft="15dp"
-                android:layout_toRightOf="@+id/state"
-                android:layout_toLeftOf="@+id/go_reply1"
-                android:textColor="@color/colorBlack"/>
-
-            <Button
-                android:id="@+id/go_reply1"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@drawable/ic_down_arrower"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp" />
-
-            <Button
-                android:id="@+id/go_reply2"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@drawable/ic_down_arrower"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                android:visibility="gone"/>
-        </RelativeLayout>
-
+            android:layout_marginRight="5dp"/>
+        <TextView
+            android:id="@+id/request_reply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="REPLY"
+            android:textColor="@color/colorBlack"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"/>
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

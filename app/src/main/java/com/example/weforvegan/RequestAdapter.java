@@ -3,6 +3,8 @@ package com.example.weforvegan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -67,13 +69,14 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView title, state;
+        TextView title, state, reply;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             title = itemView.findViewById(R.id.title);
             state = itemView.findViewById(R.id.state);
+            reply = itemView.findViewById(R.id.request_reply);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -91,6 +94,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
         public void setItem(Request item) {
             title.setText(item.getTitle());
             state.setText(item.getState());
+            reply.setText(item.getReply());
         }
     }
 }

@@ -3,10 +3,12 @@ package com.example.weforvegan;
 public class Request {
     String title;
     String state;
+    String reply;
 
-    public Request(String title, String state){
+    public Request(String title, String state, String reply){
         this.title = title;
         this.state = state;
+        this.reply = reply;
     }
 
     public String getTitle() {
@@ -24,4 +26,8 @@ public class Request {
     public void setState(String state) {
         this.state = state;
     }
+
+    public String getReply() { return reply; }
+
+    public void setReply(String reply) { this.reply = reply; }
 }

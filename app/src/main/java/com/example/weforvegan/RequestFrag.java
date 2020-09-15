@@ -37,13 +37,14 @@ public class RequestFrag extends Fragment {
                 mainActivity.onFragmentChanged(2);
             }
         });
+
         final RecyclerView recyclerView = rootView.findViewById(R.id.request_recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), new LinearLayoutManager(getActivity()).getOrientation());
         recyclerView.addItemDecoration(dividerItemDecoration);
-        adapter.addItem(new Request("레시피 업데이트 주기는 어떻게 되나요?", "답변대기"));
-        adapter.addItem(new Request("영양소 기준은 어떻게 되나요?", "답변대기"));
+        adapter.addItem(new Request("레시피 업데이트 주기는 어떻게 되나요?", "답변대기", "ㅁㅇㄹㅇㄹㅇㄹㅇㄹㅇㄹㅇㄹㅇ\nㅇㄹㅇㄹㅇ\nㅇㄹㅇㄹㅇㄹㅇㄹㅇㄹㅇㄹㅇ"));
+        adapter.addItem(new Request("영양소 기준은 어떻게 되나요?", "답변대기", "ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ"));
 
         recyclerView.setAdapter(adapter);
         return rootView;

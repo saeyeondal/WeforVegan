@@ -42,6 +42,8 @@ public class LoginPage extends Activity {
             public void onClick(View v) {
                 if((id_textView.getText().toString().equals(str)) && (password_textView.getText().toString().equals(str))){ //문자열 비교 equals(), getText() 가 반환하는 것은 문자열이 아님
                     Intent intent = new Intent(LoginPage.this, MainActivity.class); //파라메터는 현재 액티비티, 전환될 액티비티
+                    MyApplication.user_id = id_textView.getText().toString();
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent); //엑티비티 요청
                 }
                 else if((id_textView.getText().toString().equals("")) || password_textView.getText().toString().equals("")){
