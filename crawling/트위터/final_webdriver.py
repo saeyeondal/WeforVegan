@@ -71,7 +71,11 @@ for i in link_set :
     if(count%100==0) :
         time.sleep(60)
 
-    
+g = open("트위터.txt","w")
+for i in twitter :
+    g.write(i+","+twitter[i])
+    g.write('\n')
+g.close()
     
     
     
