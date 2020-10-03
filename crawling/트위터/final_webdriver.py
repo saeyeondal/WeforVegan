@@ -71,10 +71,15 @@ for i in link_set :
     if(count%100==0) :
         time.sleep(60)
 
+# 트위터.txt
+#링크 \\ 내용 
+#next 
+#링크 \\ 내용 
+#next
 g = open("트위터.txt","w")
 for i in twitter :
-    g.write(i+","+twitter[i])
-    g.write('\n')
+    g.write(i+"\\\\"+twitter[i])
+    g.write('\nnext\n')
 g.close()
     
     
