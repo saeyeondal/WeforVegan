@@ -11,21 +11,14 @@ router.get('/',(req,res) => {
         console.log("로그아웃");
         req.session.destroy();
         console.log('세션 삭제 성공');
-        res.send("로그아웃 성공");
-        /*req.session.destroy(
-            function (err) {
-                if (err) {
-                    console.log('세션 삭제시 에러');
-                    return;
-                }
-                console.log('세션 삭제 성공');
-                res.send("로그아웃 성공");
-            }
-        );*/    //세션정보 삭제
+        code = 200;
+        message = `로그아웃 성공`;
+        res.json({'code':code, 'message':message});
     }
     else{
-        console.log("로그인 안 되어 있음");
-        res.redirect('../login');
+        code = 204;
+        message = `로그인 안되어 있음`;
+        res.json({'code':code, 'message':message});
     }
 });
 
