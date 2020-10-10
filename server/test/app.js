@@ -3,7 +3,8 @@ const path = require('path');
 const dotenv = require('dotenv');
 const morgan = require('morgan')
 const cookieParser = require('cookie-parser');
-const session = require('express-session')
+const session = require('express-session');
+const MySQLStore = require('express-mysql-session')(session);
 
 // .env 파일 읽어서 process.env로 만듦
 // preocess.env.COOKIE_SECRET에 cookiesecret값 할당
@@ -59,6 +60,13 @@ app.use(session({
         secure : false,
     },
     name : 'session-cookie',
+    store : new MySQLStore({
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        database: process.env.DB_DATABASE,
+        password: process.env.DB_PASSWORD,
+        port: process.env.DB_PORT
+    })
 }))
 /*
 express-session으로 만들어진 req.session 객체에 
