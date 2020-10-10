@@ -205,7 +205,6 @@ const snsDB = function(req,res,data){
 
 
 // 좋아요 조회
-// 동기 비동기 문제 해결하기!
 router.get('/',(req,res)=>{
     // 로그인 되어 있다면
     if(req.session.user){
