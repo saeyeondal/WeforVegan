@@ -19,6 +19,7 @@ const logoutRouter = require('./routes/logout');
 const joinRouter = require('./routes/join');
 const mypageRouter = require('./routes/mypage');
 const heartRouter = require('./routes/heart');
+const qnaRouter = require('./routes/qna');
 
 const app = express();
 // 'port' : process.env.PORT ||3000
@@ -91,6 +92,7 @@ app.use('/logout',logoutRouter);
 app.use('/join',joinRouter);
 app.use('/mypage',mypageRouter);
 app.use('/heart',heartRouter);
+app.use('/qna', qnaRouter);
 // app.use(경로,라우터) => 경로로 요청왔을 때 라우터 연결
 // app.get(경로,라우터) => 경로로 get 요청왔을 때 라우터 연결
 // app.post(경로,라우터), app.put(경로,라우터)

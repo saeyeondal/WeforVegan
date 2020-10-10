@@ -51,9 +51,8 @@ router.get('/',(req,res)=>{
     }
 });
 
-// mypage 수정 테스트 하고 싶으면 위에 router.get을 주석처리하고 얘 주석 해제하기
-/*
-router.get('/', (req,res)=>{
+// mypage 수정 테스트 
+router.get('/test', (req,res)=>{
     console.log(req.session);
     if(!req.session.user){
         res.send(`로그인 먼저 하세요.`);
@@ -61,7 +60,7 @@ router.get('/', (req,res)=>{
     else
         res.sendFile(path.join(__dirname,'../html/mypage.html'));
 });
-*/
+
 // 수정용
 router.post('/',(req,res) => 
 {
@@ -76,16 +75,17 @@ router.post('/',(req,res) =>
         originID = req.session.user.id;
         id = req.body.id;
         pwd = req.body.pwd;
-        /*name = req.body.name;
+        name = req.body.name;
+        /*
         if(req.body.sex=='여자')
             sex = 'F';
         else
             sex = 'M';
         birth = req.body.birth;*/
         vegantype = req.body.vegantype;
-        var sql = 'UPDATE user SET usr_id=?, usr_pw=?, usr_vegantype=? WHERE usr_id=?' 
+        var sql = 'UPDATE user SET usr_id=?, usr_pw=?, usr_name=?, usr_vegantype=? WHERE usr_id=?' 
         //usr_idx, usr_id, usr_pw, usr_name, usr_sex, usr_birth, usr_vegantype, usr_likeidx
-        var params = [id, pwd, vegantype, originID];
+        var params = [id, pwd, name, vegantype, originID];
         // db에 삽입
         connection.query(sql,params,function(err, result){
             if(err){
