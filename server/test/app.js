@@ -13,6 +13,9 @@ dotenv.config();
 const indexRouter = require('./routes');
 const userRouter = require('./routes/user');
 const fileRouter = require('./routes/file');
+const loginRouter = require('./routes/login');
+const logoutRouter = require('./routes/logout');
+const joinRouter = require('./routes/join');
 
 const app = express();
 // 'port' : process.env.PORT ||3000
@@ -49,7 +52,7 @@ res.clearCookie('name','hailie','{httpOnly:true,secure:true});
 // cookie-parser의 secret과 동일한 secret 값 사용
 app.use(session({
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     secret : process.env.COOKIE_SECRET,
     cookie : {
         httpOnly : true,
@@ -73,6 +76,9 @@ app.use('/', indexRouter);
 // GET /user 라우터 : userRouter
 app.use('/user',userRouter);
 app.use('/file',fileRouter);
+app.use('/login',loginRouter);
+app.use('/logout',logoutRouter);
+app.use('/join',joinRouter);
 // app.use(경로,라우터) => 경로로 요청왔을 때 라우터 연결
 // app.get(경로,라우터) => 경로로 get 요청왔을 때 라우터 연결
 // app.post(경로,라우터), app.put(경로,라우터)
