@@ -46,7 +46,7 @@ router.get('/',(req,res)=>{
         // 로그인이 안되어 있다면
         console.log("로그인 안 되어 있음");
         code = 204;
-        message = `비회원입니다.`;
+        message = `비회원입니다`;
         res.json({'code':code, 'message':message});
     }
 });
@@ -55,7 +55,7 @@ router.get('/',(req,res)=>{
 router.get('/test', (req,res)=>{
     console.log(req.session);
     if(!req.session.user){
-        res.send(`로그인 먼저 하세요.`);
+        res.send(`비회원입니다`);
     }
     else
         res.sendFile(path.join(__dirname,'../html/mypage.html'));
@@ -68,7 +68,7 @@ router.post('/',(req,res) =>
         // 로그인이 안되어 있다면
         console.log("로그인 안 되어 있음");
         code = 204;
-        message = `비회원입니다.`;
+        message = `비회원입니다`;
         res.json({'code':code, 'message':message});
     }
     else{

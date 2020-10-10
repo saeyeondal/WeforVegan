@@ -8,7 +8,7 @@ var connection = require('../db');
 const router = express.Router();
 
 // 테스트용
-router.get('/',(req,res)=>{
+router.get('/',(req,res)=>{ 
     // 로그인 되어 있다면
     if(req.session.user){
         res.sendFile(path.join(__dirname,'../html/qna.html'));
@@ -29,7 +29,7 @@ router.post('/',(req,res) =>
         // 로그인이 안되어 있다면
         console.log("로그인 안 되어 있음");
         code = 204;
-        message = `비회원입니다.`;
+        message = `비회원입니다`;
         res.json({'code':code, 'message':message});
     }
     else{
@@ -48,7 +48,7 @@ router.post('/',(req,res) =>
             else{
                 if(result.length===0){
                     code = 204;
-                    message = '존재하지 않는 계정입니다.';
+                    message = '존재하지 않는 계정입니다';
                     res.json({'code':code, 'message':message});
                 }else{
                     idx = result[0].usr_idx;

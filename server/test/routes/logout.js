@@ -17,7 +17,7 @@ router.get('/',(req,res) => {
     }
     else{
         code = 204;
-        message = `로그인 안되어 있음`;
+        message = `비회원입니다`;
         res.json({'code':code, 'message':message});
     }
 });

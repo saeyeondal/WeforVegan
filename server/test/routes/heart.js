@@ -21,7 +21,7 @@ const userDB = function(req,res){
             else{
                 if(result.length===0){
                     code = 204;
-                    message = '로그인 하지 않았습니다.';
+                    message = '비회원입니다';
                     resolve({'code':code, 'message':message});
                 }
                 else{
@@ -211,7 +211,7 @@ router.get('/',(req,res)=>{
         userDB(req,res).then((data)=>{
             console.log("UDB 성공");
             // 좋아요 누른 항목이 없거나, 로그인 하지 않은 경우
-            if(data==={'apirecipe':{}, 'snsrecipe':{}}||data==={'code':204, 'message':'로그인 하지 않았습니다.'}){
+            if(data==={'apirecipe':{}, 'snsrecipe':{}}||data==={'code':204, 'message':'비회원입니다'}){
                 return res.json(data);
             }
             // 좋아요 누른 항목이 있음
@@ -245,7 +245,7 @@ router.get('/',(req,res)=>{
     }else{// 로그인 되지 않은 경우
         console.log("로그인 안 되어 있음");
         code = 204;
-        message = `비회원입니다.`;
+        message = `비회원입니다`;
         res.json({'code':code, 'message':message});
     }
 });
@@ -368,7 +368,7 @@ router.post('/cancle',(req,res)=>{
         // 로그인이 안되어 있다면
         console.log("로그인 안 되어 있음");
         code = 204;
-        message = `비회원입니다.`;
+        message = `비회원입니다`;
         res.json({'code':code, 'message':message});
     }
 });

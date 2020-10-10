@@ -37,7 +37,7 @@ router.post('/',(req,res) =>
     if(req.session.user){
         console.log("이미 로그인 되어 있음");
         code = 204;
-        message = `${req.body.id}님 이미 접속 되어 있음`;
+        message = `중복 로그인`;
         res.json({'code':code, 'message':message});
     }
     else{

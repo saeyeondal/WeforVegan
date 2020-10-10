@@ -43,7 +43,7 @@ router.post('/',(req,res) =>
         console.log("이미 로그인 되어 있음");
         console.log(req.session.user.id);
         code = 204;
-        message = `${req.body.id}님 이미 접속 되어 있음`;
+        message = `중복 로그인`;
         res.json({'code':code, 'message':message});
     }
     else{
@@ -68,7 +68,7 @@ router.post('/',(req,res) =>
                     res.json({'code':code, 'message':message});
                 }else{
                     code = 200;
-                    message = `${result[0].usr_id}님 환영합니다.`;
+                    message = `로그인 성공`;
                     req.session.user = {
                         id : req.body.id,
                         login : true
