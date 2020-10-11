@@ -1,8 +1,5 @@
 const express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
-var expressSession = require('express-session');
-var myspl = require('mysql');
 var connection = require('../db');
 
 const router = express.Router();

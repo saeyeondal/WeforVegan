@@ -1,12 +1,8 @@
 const express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
-var expressSession = require('express-session');
-var myspl = require('mysql');
 var connection = require('../db');
 
 const router = express.Router();
-
 
 const userDB = function(req,res){
     // userDB에서 해당 USER 찾아서 좋아요 정보 가져옴

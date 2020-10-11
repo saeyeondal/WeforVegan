@@ -1,11 +1,6 @@
 const express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
-var expressSession = require('express-session');
-var myspl = require('mysql');
 var connection = require('../db');
-//const { type } = require('os');
-//const { reset } = require('nodemon');
 
 
 const router = express.Router();
@@ -28,16 +23,6 @@ router.get('/',(req,res)=>{
 
 router.post('/',(req,res) => 
 {
-    /*
-    console.log(req.body); 
-    console.log(req.body.id);
-
-    console.log("쿠키");
-    console.log(req.cookies);
-    
-    console.log(req.session);
-    console.log(req.session.user);
-    */
 
     if(req.session.user){
         console.log("이미 로그인 되어 있음");
