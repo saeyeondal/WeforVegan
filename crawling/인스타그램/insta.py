@@ -53,6 +53,8 @@ instaimgurl = driver.find_element_by_xpath('//*[@id="react-root"]/section/main/a
 firstinstapost.click() #첫번째 게시글 열기
 time.sleep(2)
 
+g = open('instatext.txt', 'w', encoding='utf-8')
+
 number = 93
 
 for i in range(1000):
@@ -66,9 +68,22 @@ for i in range(1000):
         # 태그명이 div, class명이 C4VMK인 태그 아래에 있는 span 태그를 모두 선택.
     except:
         content = ' '
-                                                
-    sql = """insert into recipe(rp_idx, rp_name, rp_source) values (%s, %s, %s)"""
-    cursor.execute(sql, (number, content_edit, 'instagram'))
+    
+    
+    # 본문 내용에서 해시태그 가져오기(정규표현식 활용)
+    tags = re.findall(r'#[^\s#,\\]+', content)
+
+    for j in range(len(tags)):
+        tags_edit = unicodedata.normalize('NFC', tags[j])
+                                                      
+    sql = '''INSERT INTO recipe(rp_idx, rp_name, rp_source) VALUES ("%s", "%s", "%s")'''
+    data = (number, content_edit, 'instagram')
+    cursor.execute(sql, data)
+    conn.commit()
+
+    sql = '''INSERT INTO snsrecipe(sns_url, sns_imgurl, recipe_rp_idx, recipe_rp_name, recipe_rp_source) VALUES ("%s", "%s", "%s", "%s", "%s")'''
+    data = (instaurl, instaimgurl, number, content_edit, 'instagram')
+    cursor.execute(sql, data)
     conn.commit()
                    
     move_next(driver)
