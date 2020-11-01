@@ -28,7 +28,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -217,12 +217,10 @@
                     android:visibility="visible"
                     tools:visibility="visible" />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="382dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <Button
@@ -230,7 +228,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/rec_circle"
                     android:backgroundTint="@color/colorOrange"
-                    android:text="이메일"
+                    android:text="휴대전화"
                     android:textColor="@android:color/white"
                     android:textStyle="bold" />
 
@@ -244,25 +242,15 @@
                     android:inputType="textPassword"
                     android:paddingLeft="10dp"
                     android:textColor="@color/colorBlack"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:hint=" - 없이 작성해주세요 "/>
             </LinearLayout>
-                <Button
-                    android:id="@+id/email_check"
-                    android:layout_width="80dp"
-                    android:layout_height="33dp"
-                    android:layout_marginLeft="260dp"
-                    android:background="@drawable/rec_circle"
-                    android:backgroundTint="@color/colorGray"
-                    android:gravity="center"
-                    android:text="인증 메일 발송"
-                    android:textColor="@android:color/white"
-                    android:textSize="10dp" />
 
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="50dp"
                 android:background="@drawable/rec_circle"
                 android:backgroundTint="@color/colorGreen"
                 android:text="회원님의 채식 스타일을 선택해주세요"

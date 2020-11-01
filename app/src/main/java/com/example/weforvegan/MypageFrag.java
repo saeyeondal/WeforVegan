@@ -41,8 +41,6 @@ public class MypageFrag extends Fragment {
         final Button vegan3_2 = (Button)rootView.findViewById(R.id.vegan3_2);
         final Button vegan4_1 = (Button)rootView.findViewById(R.id.vegan4_1);
         final Button vegan4_2 = (Button)rootView.findViewById(R.id.vegan4_2);
-        final Button vegan5_1 = (Button)rootView.findViewById(R.id.vegan5_1);
-        final Button vegan5_2 = (Button)rootView.findViewById(R.id.vegan5_2);
         final TextView saveButton = (TextView) rootView.findViewById(R.id.saveButton);
 
 /* 갤러리에서 이미지 가져오는 부분 삭제함
@@ -71,10 +69,6 @@ public class MypageFrag extends Fragment {
             vegan4_1.setVisibility(View.GONE);
             vegan4_2.setVisibility(View.VISIBLE);
         }
-        else if(RegisterPage.vegetarian_state == 4) {
-            vegan5_1.setVisibility(View.GONE);
-            vegan5_2.setVisibility(View.VISIBLE);
-        }
 
         vegan1_1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,8 +81,6 @@ public class MypageFrag extends Fragment {
                 vegan3_2.setVisibility(View.GONE);
                 vegan4_1.setVisibility(View.VISIBLE);
                 vegan4_2.setVisibility(View.GONE);
-                vegan5_1.setVisibility(View.VISIBLE);
-                vegan5_2.setVisibility(View.GONE);
             }
         });
         vegan2_1.setOnClickListener(new View.OnClickListener() {
@@ -102,8 +94,6 @@ public class MypageFrag extends Fragment {
                 vegan3_2.setVisibility(View.GONE);
                 vegan4_1.setVisibility(View.VISIBLE);
                 vegan4_2.setVisibility(View.GONE);
-                vegan5_1.setVisibility(View.VISIBLE);
-                vegan5_2.setVisibility(View.GONE);
             }
         });
         vegan3_1.setOnClickListener(new View.OnClickListener() {
@@ -117,8 +107,6 @@ public class MypageFrag extends Fragment {
                 vegan1_2.setVisibility(View.GONE);
                 vegan4_1.setVisibility(View.VISIBLE);
                 vegan4_2.setVisibility(View.GONE);
-                vegan5_1.setVisibility(View.VISIBLE);
-                vegan5_2.setVisibility(View.GONE);
             }
         });
         vegan4_1.setOnClickListener(new View.OnClickListener() {
@@ -132,23 +120,6 @@ public class MypageFrag extends Fragment {
                 vegan3_2.setVisibility(View.GONE);
                 vegan1_1.setVisibility(View.VISIBLE);
                 vegan1_2.setVisibility(View.GONE);
-                vegan5_1.setVisibility(View.VISIBLE);
-                vegan5_2.setVisibility(View.GONE);
-            }
-        });
-        vegan5_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                vegan5_1.setVisibility(View.GONE);
-                vegan5_2.setVisibility(View.VISIBLE);
-                vegan2_1.setVisibility(View.VISIBLE);
-                vegan2_2.setVisibility(View.GONE);
-                vegan3_1.setVisibility(View.VISIBLE);
-                vegan3_2.setVisibility(View.GONE);
-                vegan1_1.setVisibility(View.VISIBLE);
-                vegan1_2.setVisibility(View.GONE);
-                vegan4_1.setVisibility(View.VISIBLE);
-                vegan4_2.setVisibility(View.GONE);
             }
         });
 
