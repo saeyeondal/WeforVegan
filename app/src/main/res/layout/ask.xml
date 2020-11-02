@@ -13,13 +13,14 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:text="문의 내용을 아래에 적어주시길 바랍니다."
+            android:text="※ 문의 내용을 아래에 적어주시길 바랍니다."
             android:textColor="@color/colorBlack"
             android:textSize="18dp"/>
 
         <EditText
+            android:id="@+id/ask_msg"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="250dp"
             android:background="@drawable/rec_box"
             android:layout_margin="20dp"
             android:textColor="@color/colorBlack"
@@ -28,7 +29,33 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/email_text"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorBlack"
+                android:text="이메일: "
+                android:gravity="center"
+                android:layout_marginLeft="20dp"/>
+            <EditText
+                android:id="@+id/ask_mail"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@drawable/rec_box"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/colorBlack"
+                android:layout_toRightOf="@+id/email_text"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp">
             <Button
                 android:id="@+id/submit"
                 android:layout_width="50dp"
