@@ -41,7 +41,7 @@ public class GetRequest extends AsyncTask<String, Void, String> {
         return result;
     }
 
-    public static String[] jsonParser_users(String jsonString){
+    /*public static String[] jsonParser_users(String jsonString){
         String[] userArray = null;
 
         try{
@@ -61,5 +61,5 @@ public class GetRequest extends AsyncTask<String, Void, String> {
             e.printStackTrace();
         }
         return userArray;
-    }
+    }*/
 }
