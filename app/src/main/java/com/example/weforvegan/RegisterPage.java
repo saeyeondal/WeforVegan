@@ -27,6 +27,7 @@ import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.ExecutionException;
 
 public class RegisterPage extends Activity {
     TextView id_textview, password_textview, password_check, email_textView;
@@ -155,8 +156,10 @@ public class RegisterPage extends Activity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String response="";
                 switch(v.getId()){
                     case R.id.register:
+
                         if(!validate())
                             Toast.makeText(getBaseContext(), "Enter some data!", Toast.LENGTH_LONG).show();
                         else {
@@ -166,9 +169,16 @@ public class RegisterPage extends Activity {
                             httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/join", id_textview.getText().toString(),
                             password_textview.getText().toString(), email_textView.getText().toString(), "여자", "20대", "락토오보");
                             */
-                            httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/join", "id", "testtest", "pwd", "pig", "name", "01000101", "sex", "여자", "birth",
-                                    "20대", "vegantype", "락토오보");
-                            Toast.makeText(getBaseContext(), "전송 완료", Toast.LENGTH_LONG).show();
+                            try {
+                                response = httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/join", "id", "my test", "pwd", "pig", "name", "01000101", "sex", "여자", "birth",
+                                        "20대", "vegantype", "락토오보").get();
+                            } catch (ExecutionException e) {
+                                e.printStackTrace();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                            Toast.makeText(getBaseContext(), response, Toast.LENGTH_LONG).show();
                         }
 
                         break;

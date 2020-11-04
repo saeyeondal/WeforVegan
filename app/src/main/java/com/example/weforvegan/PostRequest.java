@@ -22,6 +22,7 @@ public class PostRequest extends AsyncTask<String, Void, String>{
 
     public static String POST(String... urls) throws UnsupportedEncodingException {
         String result = "";
+        String response = "";
         try {
             URL urlCon = new URL(urls[0]);
             System.out.println(urls[0]);
@@ -59,11 +60,8 @@ public class PostRequest extends AsyncTask<String, Void, String>{
                 while ((str = reader.readLine()) != null) {       // 서버에서 라인단위로 보내줄 것이므로 라인단위로 읽는다
                     builder.append(str + "\n");                     // View에 표시하기 위해 라인 구분자 추가
                 }
-                String myResult = builder.toString();
-                System.out.println(myResult);
-                JSONObject jsonObject_result = new JSONObject(myResult);
-                String json_result = jsonObject_result.getString("message");
-                System.out.println(json_result);
+                response = builder.toString();
+                System.out.println(response);
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -78,7 +76,7 @@ public class PostRequest extends AsyncTask<String, Void, String>{
         catch (Exception e) {
             Log.d("InputStream", e.getLocalizedMessage());
         }
-        return result;
+        return response;
     }
     @Override
     protected String doInBackground(String... urls) {
