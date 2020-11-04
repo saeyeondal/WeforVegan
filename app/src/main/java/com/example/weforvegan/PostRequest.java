@@ -20,9 +20,6 @@ import java.net.URL;
 public class PostRequest extends AsyncTask<String, Void, String>{
     private   MainActivity mainAct;
 
-    PostRequest(MainActivity mainActivity) {
-        this.mainAct = mainActivity;
-    }
     public static String POST(String... urls) throws UnsupportedEncodingException {
         String result = "";
         try {

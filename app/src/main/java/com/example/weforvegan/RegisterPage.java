@@ -161,12 +161,12 @@ public class RegisterPage extends Activity {
                             Toast.makeText(getBaseContext(), "Enter some data!", Toast.LENGTH_LONG).show();
                         else {
                             // call AsynTask to perform network operation on separate thread
-                            HttpAsyncTask httpTask = new HttpAsyncTask(RegisterPage.this);
+                            PostRequest httpTask = new PostRequest();
                             /*
                             httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/join", id_textview.getText().toString(),
                             password_textview.getText().toString(), email_textView.getText().toString(), "여자", "20대", "락토오보");
                             */
-                            httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/join", "id", "hungry", "pwd", "pig", "name", "01000101", "sex", "여자", "birth",
+                            httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/join", "id", "testtest", "pwd", "pig", "name", "01000101", "sex", "여자", "birth",
                                     "20대", "vegantype", "락토오보");
                             Toast.makeText(getBaseContext(), "전송 완료", Toast.LENGTH_LONG).show();
                         }
@@ -186,108 +186,6 @@ public class RegisterPage extends Activity {
             }
         });
          */
-    }
-
-    public static String POST(String... urls) throws UnsupportedEncodingException {
-        //InputStream is = null;
-        //InputStreamReader responseBodyReader = new InputStreamReader(is, "UTF-8");
-        String result = "";
-        try {
-            URL urlCon = new URL(urls[0]);
-            System.out.println(urls[0]);
-            HttpURLConnection httpCon = (HttpURLConnection)urlCon.openConnection(); //Create Connection
-
-            String json = "";
-
-            // build jsonObject
-            JSONObject jsonObject = new JSONObject();
-            for(int i=1; i<urls.length; i=i+2)
-                jsonObject.accumulate(urls[i], urls[i+1]);
-
-            // convert JSONObject to JSON to String
-            json = jsonObject.toString();
-            System.out.println(json);
-
-            // ** Alternative way to convert Person object to JSON string usin Jackson Lib
-            // ObjectMapper mapper = new ObjectMapper();
-            // json = mapper.writeValueAsString(person);
-
-            // Set some headers to inform server about the type of the content
-            httpCon.setRequestProperty("Accept", "application/json");
-            httpCon.setRequestProperty("Content-type", "application/json");
-
-            // OutputStream으로 POST 데이터를 넘겨주겠다는 옵션.
-            httpCon.setDoOutput(true);
-            // InputStream으로 서버로 부터 응답을 받겠다는 옵션.
-            httpCon.setDoInput(true);
-
-            OutputStream os = httpCon.getOutputStream();
-            os.write(json.getBytes("UTF-8"));
-            os.flush();
-            // receive response as inputStream
-            try {
-                InputStreamReader tmp = new InputStreamReader(httpCon.getInputStream(), "UTF-8");
-                BufferedReader reader = new BufferedReader(tmp);
-                StringBuilder builder = new StringBuilder();
-                String str;
-                while ((str = reader.readLine()) != null) {       // 서버에서 라인단위로 보내줄 것이므로 라인단위로 읽는다
-                    builder.append(str + "\n");                     // View에 표시하기 위해 라인 구분자 추가
-                }
-                String myResult = builder.toString();
-                System.out.println(myResult);
-                JSONObject jsonObject_result = new JSONObject(myResult);
-                String json_result = jsonObject_result.getString("message");
-                System.out.println(json_result);
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-            finally {
-                httpCon.disconnect();
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        catch (Exception e) {
-            Log.d("InputStream", e.getLocalizedMessage());
-        }
-
-        return result;
-    }
-
-    private class HttpAsyncTask extends AsyncTask<String, Void, String> {
-
-        private   RegisterPage registerPage;
-
-        HttpAsyncTask(RegisterPage registerPage) {
-            this.registerPage = registerPage;
-        }
-        @Override
-        protected String doInBackground(String... urls) {
-
-           /* person = new Person();
-            person.setId(urls[1]);
-            person.setPwd(urls[2]);
-            person.setName(urls[3]);
-            person.setSex(urls[4]);
-            person.setBirth(urls[5]);
-            person.setVegantype(urls[6]);*/
-
-            String result = null;
-            try {
-                //result = POST(urls[0],person);
-                result = POST(urls);
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-            return result;
-        }
-        // onPostExecute displays the results of the AsyncTask.
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-        }
     }
 
     private boolean validate(){
