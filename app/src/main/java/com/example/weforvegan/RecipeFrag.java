@@ -1,10 +1,12 @@
 package com.example.weforvegan;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -24,6 +26,7 @@ public class RecipeFrag extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE); // 액션바 없애기
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_frag);
         closeBtn = (Button)findViewById(R.id.close_btn);
