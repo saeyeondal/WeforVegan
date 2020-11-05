@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.concurrent.ExecutionException;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -32,6 +33,15 @@ public class MypageFrag extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.my_page, container, false);
 
+        GetRequest httpTask = new GetRequest(getActivity().getApplicationContext());
+        try {
+            String response = httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/mypage").get();
+            System.out.println(response);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         final Button vegan1_1 = (Button)rootView.findViewById(R.id.vegan1_1);
         final Button vegan1_2 = (Button)rootView.findViewById(R.id.vegan1_2);
