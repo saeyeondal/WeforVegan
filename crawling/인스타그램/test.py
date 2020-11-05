@@ -54,7 +54,7 @@ time.sleep(2)
 
 number = 1
 
-for i in range(1000):
+for i in range(400):
     html = driver.page_source
     soup = BeautifulSoup(features="html.parser")
 
