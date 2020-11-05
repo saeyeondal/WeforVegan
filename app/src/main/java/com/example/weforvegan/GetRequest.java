@@ -1,6 +1,10 @@
 package com.example.weforvegan;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,6 +15,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class GetRequest extends AsyncTask<String, Void, String> {
+    HttpURLConnection con;
+    Context context;
+
     @Override
     protected String doInBackground(String... urlstr) {
         String result = null;
@@ -20,6 +27,7 @@ public class GetRequest extends AsyncTask<String, Void, String> {
             con.setRequestMethod("GET");
             con.setRequestProperty("Accept-Charset", "UTF-8");
             con.setDoInput(true);
+            setCookieHeader();
 
             InputStreamReader inputStrteam = new InputStreamReader(con.getInputStream(), "UTF-8");
             BufferedReader reader = new BufferedReader(inputStrteam);
@@ -39,6 +47,15 @@ public class GetRequest extends AsyncTask<String, Void, String> {
             e.printStackTrace();
         }
         return result;
+    }
+
+    private void setCookieHeader(){
+        SharedPreferences pref = context.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE);
+        String sessionid = pref.getString("sessionid", null);
+        if(sessionid != null){
+            Log.d("weforveganheader", "세션 아이디" + sessionid + "가 요청 헤더에 포함 되었습니다.");
+            con.setRequestProperty("Cookie", sessionid);
+        }
     }
 
     /*public static String[] jsonParser_users(String jsonString){
