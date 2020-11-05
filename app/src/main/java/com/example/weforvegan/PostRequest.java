@@ -21,8 +21,12 @@ import java.net.URL;
 
 public class PostRequest extends AsyncTask<String, Void, String>{
     private   MainActivity mainAct;
-    Context context;
+    static Context post_context;
     static HttpURLConnection httpCon;
+
+    public PostRequest(Context post_context){
+        this.post_context = post_context;
+    }
 
     public static String POST(String... urls) throws UnsupportedEncodingException {
         String result = "";
@@ -51,6 +55,11 @@ public class PostRequest extends AsyncTask<String, Void, String>{
             httpCon.setDoOutput(true);
             // InputStream으로 서버로 부터 응답을 받겠다는 옵션.
             httpCon.setDoInput(true);
+
+            SharedPreferences pref = post_context.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE);
+            String sessionid = pref.getString("sessionid", null);
+            if(sessionid != null)
+                httpCon.setRequestProperty("Cookie", sessionid);
 
             OutputStream os = httpCon.getOutputStream();
             os.write(json.getBytes("UTF-8"));
@@ -91,15 +100,6 @@ public class PostRequest extends AsyncTask<String, Void, String>{
             e.printStackTrace();
         }
         return result;
-    }
-
-    private void setCookieHeader(){
-        SharedPreferences pref = context.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE);
-        String sessionid = pref.getString("sessionid", null);
-        if(sessionid != null){
-            Log.d("weforveganheader", "세션 아이디" + sessionid + "가 요청 헤더에 포함 되었습니다.");
-            httpCon.setRequestProperty("Cookie", sessionid);
-        }
     }
     // onPostExecute displays the results of the AsyncTask.
     /*

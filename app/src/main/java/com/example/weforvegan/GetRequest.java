@@ -31,11 +31,12 @@ public class GetRequest extends AsyncTask<String, Void, String> {
             con.setRequestProperty("Accept-Charset", "UTF-8");
             con.setDoInput(true);
 
-            System.out.println("들어왔어");
+            SharedPreferences pref = get_context.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE);
+            String sessionid = pref.getString("sessionid", null);
+            if(sessionid != null){
+                con.setRequestProperty("Cookie", sessionid);
+            }
 
-            setCookieHeader(get_context);
-
-            System.out.println("헤더 들어감");
             InputStreamReader inputStrteam = new InputStreamReader(con.getInputStream(), "UTF-8");
             BufferedReader reader = new BufferedReader(inputStrteam);
             StringBuilder builder = new StringBuilder();
@@ -48,23 +49,12 @@ public class GetRequest extends AsyncTask<String, Void, String> {
             reader.close();
         }
         catch (MalformedURLException e) {
-            System.out.println("에러1");
             e.printStackTrace();
         }
         catch (Exception e){
-            System.out.println("에러2");
             e.printStackTrace();
         }
         return result;
-    }
-
-    private void setCookieHeader(Context context){
-        SharedPreferences pref = context.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE);
-        String sessionid = pref.getString("sessionid", null);
-        if(sessionid != null){
-            System.out.println("세션 아이디 " + sessionid + "가 요청 헤더에 포함 되었습니다.");
-            con.setRequestProperty("Cookie", sessionid);
-        }
     }
 
     /*public static String[] jsonParser_users(String jsonString){
