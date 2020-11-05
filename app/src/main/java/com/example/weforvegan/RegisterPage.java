@@ -164,7 +164,7 @@ public class RegisterPage extends Activity {
                             Toast.makeText(getBaseContext(), "Enter some data!", Toast.LENGTH_LONG).show();
                         else {
                             // call AsynTask to perform network operation on separate thread
-                            PostRequest httpTask = new PostRequest();
+                            PostRequest httpTask = new PostRequest(getApplicationContext());
                             /*
                             httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/join", id_textview.getText().toString(),
                             password_textview.getText().toString(), email_textView.getText().toString(), "여자", "20대", "락토오보");

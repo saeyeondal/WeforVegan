@@ -267,10 +267,10 @@ public class LoginPage extends Activity {
             List<String> cookies = httpCon.getHeaderFields().get("Set-Cookie");
             Log.d("weforveganheader", "처음 로그인하여 세션 아이디를 pref에 넣었습니다." + cookies);
             if(cookies != null){
-                for(String cookie : cookies){
-                    String sessionid = cookie.split(";\\s*")[0];
-                    setSessionIdInSharedPref(sessionid);
-                }
+                String sessionid = "";
+                for(int i=0; i<cookies.size(); i++)
+                    sessionid += cookies.get(i);
+                setSessionIdInSharedPref(sessionid);
             }
         }
 

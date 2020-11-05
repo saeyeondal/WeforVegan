@@ -16,8 +16,9 @@
     <list default="true" id="4ba4ca29-a570-4eeb-91cb-db74a6417d3c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/GetRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/GetRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/MypageFrag.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/MypageFrag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/PostRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/PostRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/RegisterPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/RegisterPage.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,8 +42,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/LoginPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5291">
-              <caret line="74" column="59" selection-start-line="74" selection-start-column="59" selection-end-line="74" selection-end-column="59" />
+            <state relative-caret-position="197">
+              <caret line="268" column="32" selection-start-line="268" selection-start-column="32" selection-end-line="268" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -50,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/RegisterPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="173" column="74" lean-forward="true" selection-start-line="166" selection-start-column="27" selection-end-line="173" selection-end-column="74" />
+            <state relative-caret-position="486">
+              <caret line="166" column="90" selection-start-line="166" selection-start-column="90" selection-end-line="166" selection-end-column="90" />
             </state>
           </provider>
         </entry>
@@ -59,8 +60,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/GetRequest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="65" column="56" lean-forward="true" selection-start-line="65" selection-start-column="56" selection-end-line="65" selection-end-column="56" />
+            <state relative-caret-position="56">
+              <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#570#571#0" expanded="true" />
@@ -73,8 +74,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/PostRequest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="90" column="32" lean-forward="true" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
+            <state relative-caret-position="168">
+              <caret line="58" column="42" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
+              <folding>
+                <element signature="e#714#715#0" expanded="true" />
+                <element signature="e#733#734#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,7 +97,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/MypageFrag.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="42">
-              <caret line="39" column="40" lean-forward="true" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
+              <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -130,25 +135,25 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/GetJSONObject.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/ask.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/RecipeFrag.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/RegisterPage.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/JsonParser.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/SessionControl.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/SessionManagement.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/User.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/LoginPage.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/Cookie.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/PostRequest.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/MypageFrag.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/LoginPage.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/RegisterPage.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/PostRequest.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/GetRequest.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="378" />
-    <option name="width" value="1550" />
-    <option name="height" value="1098" />
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1088" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -390,7 +395,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604564838624</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="쿠키 하는 중">
+      <created>1604568736050</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1604568736050</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -399,7 +411,7 @@
     <layout>
       <window_info id="Resources Explorer" order="0" sideWeight="0.50091743" side_tool="true" weight="0.29545453" />
       <window_info id="Captures" order="1" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49908257" visible="true" weight="0.11013514" />
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49908257" visible="true" weight="0.29864866" />
       <window_info id="Structure" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Designer" order="5" />
@@ -411,7 +423,7 @@
       <window_info anchor="bottom" id="TODO" order="1" />
       <window_info anchor="bottom" id="Terminal" order="2" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.5006757" side_tool="true" weight="0.433518" />
-      <window_info active="true" anchor="bottom" id="Logcat" order="4" sideWeight="0.49932432" visible="true" weight="0.23545706" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="4" sideWeight="0.49932432" visible="true" weight="0.3434903" />
       <window_info anchor="bottom" id="Android Profiler" order="5" weight="0.32963988" />
       <window_info anchor="bottom" id="Build" order="6" weight="0.29224378" />
       <window_info anchor="bottom" id="Debug" order="7" />
@@ -462,7 +474,8 @@
     <MESSAGE value="쿠키 해결 중" />
     <MESSAGE value="자동 로그인 완료" />
     <MESSAGE value="쿠키 했음" />
-    <option name="LAST_COMMIT_MESSAGE" value="쿠키 했음" />
+    <MESSAGE value="쿠키 하는 중" />
+    <option name="LAST_COMMIT_MESSAGE" value="쿠키 하는 중" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/vegebar.png">
@@ -713,13 +726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/RegisterPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="173" column="74" lean-forward="true" selection-start-line="166" selection-start-column="27" selection-end-line="173" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/SessionManagement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
@@ -730,17 +736,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/PostRequest.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/MypageFrag.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="90" column="32" lean-forward="true" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/LoginPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5291">
-          <caret line="74" column="59" selection-start-line="74" selection-start-column="59" selection-end-line="74" selection-end-column="59" />
+        <state relative-caret-position="42">
+          <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -751,17 +750,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/MypageFrag.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/LoginPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="39" column="40" lean-forward="true" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
+        <state relative-caret-position="197">
+          <caret line="268" column="32" selection-start-line="268" selection-start-column="32" selection-end-line="268" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/RegisterPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="166" column="90" selection-start-line="166" selection-start-column="90" selection-end-line="166" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/PostRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="58" column="42" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
+          <folding>
+            <element signature="e#714#715#0" expanded="true" />
+            <element signature="e#733#734#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/GetRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="65" column="56" lean-forward="true" selection-start-line="65" selection-start-column="56" selection-end-line="65" selection-end-column="56" />
+        <state relative-caret-position="56">
+          <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#570#571#0" expanded="true" />
