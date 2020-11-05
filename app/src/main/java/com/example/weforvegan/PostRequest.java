@@ -1,6 +1,8 @@
 package com.example.weforvegan;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -19,6 +21,8 @@ import java.net.URL;
 
 public class PostRequest extends AsyncTask<String, Void, String>{
     private   MainActivity mainAct;
+    Context context;
+    static HttpURLConnection httpCon;
 
     public static String POST(String... urls) throws UnsupportedEncodingException {
         String result = "";
@@ -26,7 +30,7 @@ public class PostRequest extends AsyncTask<String, Void, String>{
         try {
             URL urlCon = new URL(urls[0]);
             System.out.println(urls[0]);
-            HttpURLConnection httpCon = (HttpURLConnection)urlCon.openConnection(); //Create Connection
+            httpCon = (HttpURLConnection)urlCon.openConnection(); //Create Connection
 
             String json = "";
 
@@ -87,6 +91,15 @@ public class PostRequest extends AsyncTask<String, Void, String>{
             e.printStackTrace();
         }
         return result;
+    }
+
+    private void setCookieHeader(){
+        SharedPreferences pref = context.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE);
+        String sessionid = pref.getString("sessionid", null);
+        if(sessionid != null){
+            Log.d("weforveganheader", "세션 아이디" + sessionid + "가 요청 헤더에 포함 되었습니다.");
+            httpCon.setRequestProperty("Cookie", sessionid);
+        }
     }
     // onPostExecute displays the results of the AsyncTask.
     /*

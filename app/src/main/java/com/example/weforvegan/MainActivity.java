@@ -1,12 +1,15 @@
 package com.example.weforvegan;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -67,6 +70,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         recommendFrag = new RecommendFrag();
         addRequestFrag = new AddRequestFrag();
         likeRecipePage = new LikeRecipePage();
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("sessionCookie", Context.MODE_PRIVATE);
+        Log.d("weforveganheader", "메인에서 쿠키 불러옴" + pref.getString("sessionid", null));
+
 
         if(savedInstanceState == null)
             navigationView.getMenu().performIdentifierAction(R.id.nav_search, 0);

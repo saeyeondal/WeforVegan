@@ -1,7 +1,9 @@
 package com.example.weforvegan;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -178,14 +180,14 @@ public class LoginPage extends Activity {
 
     public class LoginRequest extends AsyncTask<String, Void, String> {
         private   MainActivity mainAct;
-
+        HttpURLConnection httpCon;
         public String POST(String... urls) throws UnsupportedEncodingException {
             String result = "";
             String response = "";
             try {
                 URL urlCon = new URL(urls[0]);
                 System.out.println(urls[0]);
-                HttpURLConnection httpCon = (HttpURLConnection)urlCon.openConnection(); //Create Connection
+                httpCon = (HttpURLConnection)urlCon.openConnection(); //Create Connection
 
                 String json = "";
 
@@ -207,6 +209,7 @@ public class LoginPage extends Activity {
                 // InputStream으로 서버로 부터 응답을 받겠다는 옵션.
                 httpCon.setDoInput(true);
 
+                setCookieHeader();
                 OutputStream os = httpCon.getOutputStream();
                 os.write(json.getBytes("UTF-8"));
                 os.flush();
@@ -219,6 +222,8 @@ public class LoginPage extends Activity {
                     while ((str = reader.readLine()) != null) {       // 서버에서 라인단위로 보내줄 것이므로 라인단위로 읽는다
                         builder.append(str + "\n");                     // View에 표시하기 위해 라인 구분자 추가
                     }
+
+                    getCookieHeader();
                     response = builder.toString();
                     System.out.println(response);
                 }
@@ -237,6 +242,7 @@ public class LoginPage extends Activity {
             }
             return response;
         }
+
         @Override
         protected String doInBackground(String... urls) {
             String result = null;
@@ -246,6 +252,39 @@ public class LoginPage extends Activity {
                 e.printStackTrace();
             }
             return result;
+        }
+
+        private void setCookieHeader(){
+            SharedPreferences pref = getApplicationContext().getSharedPreferences("sessionCookie", Context.MODE_PRIVATE);
+            String sessionid = pref.getString("sessionid", null);
+            if(sessionid != null){
+                Log.d("weforveganheader", "세션 아이디" + sessionid + "가 요청 헤더에 포함 되었습니다.");
+                httpCon.setRequestProperty("Cookie", sessionid);
+            }
+        }
+
+        private void getCookieHeader(){
+            List<String> cookies = httpCon.getHeaderFields().get("Set-Cookie");
+            Log.d("weforveganheader", "처음 로그인하여 세션 아이디를 pref에 넣었습니다." + cookies);
+            if(cookies != null){
+                for(String cookie : cookies){
+                    String sessionid = cookie.split(";\\s*")[0];
+                    setSessionIdInSharedPref(sessionid);
+                }
+            }
+        }
+
+        private void setSessionIdInSharedPref(String sessionid){
+            SharedPreferences pref = getApplicationContext().getSharedPreferences("sessionCookie", Context.MODE_PRIVATE);
+            SharedPreferences.Editor edit = pref.edit();
+            if(pref.getString("sessionid", null) == null)
+                Log.d("weforveganheader", "처음 로그인하여 세션 아이디를 pref에 넣었습니다." + sessionid);
+            else if(!pref.getString("sessionid", null).equals(sessionid)){
+                Log.d("weforveganheader", "기존의 세션 아이디"+pref.getString("sessionid", null) + "가 만료되어서 서버의 세션 아이디 " + sessionid + " 로 교체 되었습니다.");
+            }
+
+            edit.putString("sessionid", sessionid);
+            edit.apply();
         }
         // onPostExecute displays the results of the AsyncTask.
     /*
