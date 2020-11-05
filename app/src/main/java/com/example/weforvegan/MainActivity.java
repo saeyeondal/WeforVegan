@@ -32,6 +32,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
+import java.util.concurrent.ExecutionException;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, FragmentCallback {
     SearchFrag searchFrag;
     ScannerFrag scannerFrag;
@@ -137,6 +139,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             onFragmentSelected(5, null);
         }
         else if(id == R.id.nav_logout){
+            GetRequest httpTask = new GetRequest(getApplicationContext());
+            try {
+                String response = httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/logout").get();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             SessionManagement sessionManagement = new SessionManagement(MainActivity.this);
             sessionManagement.removeSession();
 
