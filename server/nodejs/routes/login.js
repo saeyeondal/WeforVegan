@@ -46,11 +46,13 @@ router.post('/',(req,res) =>
                     code = 204;
                     message = '존재하지 않는 계정입니다.';
                     res.json({'code':code, 'message':message});
+                    req.session.destroy();
                 }
                 else if(pwd !== result[0].usr_pw){
                     code = 204;
                     message = '비밀번호가  틀렸습니다.';
                     res.json({'code':code, 'message':message});
+                    req.session.destroy();
                 }else{
                     code = 200;
                     message = `로그인 성공`;
