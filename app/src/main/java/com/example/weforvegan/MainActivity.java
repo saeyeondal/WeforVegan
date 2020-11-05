@@ -130,6 +130,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             onFragmentSelected(5, null);
         }
         else if(id == R.id.nav_logout){
+            SessionManagement sessionManagement = new SessionManagement(MainActivity.this);
+            sessionManagement.removeSession();
+
             Intent intent = new Intent(this, LoginPage.class); //파라메터는 현재 액티비티, 전환될 액티비티
             LoginPage.logState = "logout";
             startActivity(intent); //엑티비티 요청

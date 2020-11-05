@@ -84,7 +84,7 @@ public class LoginPage extends Activity {
                 if(result_msg.equals("로그인 성공")){
                     Toast myToast = Toast.makeText(getApplicationContext(),"로그인 성공", Toast.LENGTH_SHORT);
                     myToast.show();
-
+                    login();
 
                 }
                 else if(result_msg.equals("중복 로그인")){
@@ -137,6 +137,44 @@ public class LoginPage extends Activity {
         String cookieString = cookieManager.getCookie(url);
         CookieStore cs =
     }*/
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //check if user is logged in
+        //if user is logged in --> move to mainActivity
+
+        SessionManagement sessionManagement = new SessionManagement(LoginPage.this);
+        int userID = sessionManagement.getSession();
+        System.out.println("");
+        if(userID != -1){
+            //user id logged in and so move to mainActivity
+            moveToMainActivity();
+        }
+        else{
+            //do nothing
+        }
+
+    }
+
+    public void login() {
+        //1.log into app and save session of user
+        //2.move to mainActivity
+
+        //1. login and save session
+        User user = new User(12, "sy");
+        SessionManagement sessionManagement = new SessionManagement(LoginPage.this);
+        sessionManagement.saveSession(user);
+
+        //2. step
+        moveToMainActivity();
+    }
+
+    private void moveToMainActivity(){
+        Intent intent = new Intent(LoginPage.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 
     public class LoginRequest extends AsyncTask<String, Void, String> {
         private   MainActivity mainAct;
