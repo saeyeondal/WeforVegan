@@ -55,6 +55,10 @@ app.use('/qna', qnaRouter);
 app.use((req,res,next)=>{
     res.status(404).send('Not Found');
 });
+app.use(function (err, req, res, next) {              
+    console.error(err.stack)
+    res.status(500).send('Something broke!')
+});
 
 app.listen(app.get('port'), ()=>{
     console.log(app.get('port'), '번 포트에서 대기 중');

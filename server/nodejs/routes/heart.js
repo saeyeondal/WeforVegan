@@ -1,3 +1,23 @@
+// 넘어온 값이 빈값인지 체크합니다.
+// !value 하면 생기는 논리적 오류를 제거하기 위해
+// 명시적으로 value == 사용
+// [], {} 도 빈값으로 처리
+var isEmpty = function(value){
+    if (value === null) 
+        return true 
+    if (typeof value === 'undefined') 
+        return true 
+    if (typeof value === 'string' && value === '') 
+        return true 
+    if (Array.isArray(value) && value.length < 1) 
+        return true 
+    if (typeof value === 'object' && value.constructor.name === 'Object' && Object.keys(value).length < 1 && Object.getOwnPropertyNames(value) < 1) 
+        return true 
+    if (typeof value === 'object' && value.constructor.name === 'String' && Object.keys(value).length < 1) 
+        return true 
+    return false
+};
+
 const express = require('express');
 var path = require('path');
 var connection = require('../db');
@@ -24,15 +44,20 @@ const userDB = function(req,res){
                     // 레시피 idx 정상적으로 가져옴
                     // 인덱스 토그나이저
                     var rp_idx_like = result[0].usr_likeidx;
-                    if(rp_idx_like===null || rp_idx_like===''){
+                    if(isEmpty(rp_idx_like) || rp_idx_like===''){
+                        //rp_idx_like='';
+                        console.log("rp_idx_like");
+                        console.log(rp_idx_like);
                         resolve({'apirecipe':{}, 'snsrecipe':{}});
                     }
-                    idx_list = rp_idx_like.split(',');
-                    for(i=0;i<idx_list.length;i++){
-                        idx_list[i] = idx_list[i].replace(' ','');
+                    else{
+                        idx_list = rp_idx_like.split(',');
+                        for(i=0;i<idx_list.length;i++){
+                            idx_list[i] = idx_list[i].replace(' ','');
+                        }
+                        console.log("userDB: "+idx_list);
+                        resolve(idx_list);
                     }
-                    console.log("userDB: "+idx_list);
-                    resolve(idx_list);
                 }
             }
         });
@@ -207,15 +232,17 @@ router.get('/',(req,res)=>{
         userDB(req,res).then((data)=>{
             console.log("UDB 성공");
             // 좋아요 누른 항목이 없거나, 로그인 하지 않은 경우
-            if(data==={'apirecipe':{}, 'snsrecipe':{}}||data==={'code':204, 'message':'비회원입니다'}){
+            if(JSON.stringify(data)==="{\"apirecipe\":{},\"snsrecipe\":{}}"||JSON.stringify(data)==="{\"code\":204,\"message\":\"비회원입니다\"}"){
+                console.log("if1");
                 return res.json(data);
             }
+            console.log("return1");
             // 좋아요 누른 항목이 있음
             return recipeDB(req,res,data)})
         .then((data)=>{
             console.log("RDB 성공");
             // 레시피 인덱스가 잘못된 경우
-            if(data==={'code':204, 'message':'존재하지 않는 레시피입니다.'}){
+            if(JSON.stringify(data)==="{\"code\":204,\"message\":\"존재하지 않는 레시피입니다.\"}"){
                 return res.json(data);
             }
             // data = {'api_recipe':api_recipe, 'sns_recipe':sns_recipe};
@@ -223,14 +250,14 @@ router.get('/',(req,res)=>{
         .then((data)=>{
             console.log("ADB 성공");
             // 레시피 인덱스가 잘못된 경우
-            if(data==={'code':204, 'message':'존재하지 않는 레시피입니다.'}){
+            if(JSON.stringify(data)==="{\"code\":204,\"message\":\"존재하지 않는 레시피입니다.\"}"){
                 return res.json(data);
             }
             return snsDB(req,res,data);})
         .then((data)=>{
             console.log("SDB 성공");
             // 레시피 인덱스가 잘못된 경우
-            if(data==={'code':204, 'message':'존재하지 않는 레시피입니다.'}){
+            if(JSON.stringify(data)==="{\"code\":204,\"message\":\"존재하지 않는 레시피입니다.\"}"){
                 return res.json(data);
             }
             return res.json(data);})
@@ -269,7 +296,7 @@ router.post('/add',(req,res)=>{
                 }
                 else{
                     var rp_idx_like = '';
-                    if(result[0].usr_likeidx===null || result[0].usr_likeidx==="")
+                    if(isEmpty(result[0].usr_likeidx) || result[0].usr_likeidx==="")
                         rp_idx_like = " " + req.body.rp_idx + ", ";
                     else{
                         rp_idx_like = result[0].usr_likeidx + req.body.rp_idx + ", ";
