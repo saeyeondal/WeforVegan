@@ -142,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             GetRequest httpTask = new GetRequest(getApplicationContext());
             try {
                 String response = httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/logout").get();
+
             } catch (ExecutionException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {

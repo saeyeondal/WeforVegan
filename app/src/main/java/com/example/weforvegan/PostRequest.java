@@ -84,9 +84,11 @@ public class PostRequest extends AsyncTask<String, Void, String>{
             }
         }
         catch (IOException e) {
+            System.out.println("예외1");
             e.printStackTrace();
         }
         catch (Exception e) {
+            System.out.println("예외2");
             Log.d("InputStream", e.getLocalizedMessage());
         }
         return response;

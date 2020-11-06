@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.concurrent.ExecutionException;
+
 public class ResultFrag extends Fragment {
     public static String barcodeNumber;
     TextView productName;
@@ -20,6 +22,15 @@ public class ResultFrag extends Fragment {
         productName = (TextView)rootView.findViewById(R.id.product_name);
         //productName.setText(barcodeNumber);
 
+        PostRequest request = new PostRequest(getActivity().getApplicationContext());
+        try {
+            String response = request.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/text1.php").get();
+            System.out.println("바코드: \n" + response);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return rootView;
     }
 }

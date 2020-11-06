@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.concurrent.ExecutionException;
+
 public class SearchFrag extends Fragment {
     static final MenuAdapter adapter = new MenuAdapter();
     static TextView searchText;
@@ -31,6 +33,17 @@ public class SearchFrag extends Fragment {
         searchText = (TextView)rootView.findViewById(R.id.search_text);
         searchBtn = (Button)rootView.findViewById(R.id.search_btn);
         TabHost th = (TabHost)rootView.findViewById(R.id.th);
+
+        PostRequest request = new PostRequest(getActivity().getApplicationContext());
+        try {
+            String response = request.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/text1.php", "BAR_NUM", "8801024949960").get();
+            System.out.println("바코드: \n" + response);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         th.setup();
         TabHost.TabSpec ts1 = th.newTabSpec("Tab1");
         ts1.setIndicator("일반레시피");
