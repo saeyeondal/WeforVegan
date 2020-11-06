@@ -9,7 +9,7 @@
 <body>
 
 
-<form action="ApiRecipe.php" method="post">      
+<form action="snsRecipe.php" method="post">      
 
 <input type = text  name = recipe>
 
