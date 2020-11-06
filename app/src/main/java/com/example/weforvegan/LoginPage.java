@@ -84,37 +84,20 @@ public class LoginPage extends Activity {
                 }
 
                 if(result_msg.equals("로그인 성공")){
-                    Toast myToast = Toast.makeText(getApplicationContext(),"로그인 성공", Toast.LENGTH_SHORT);
-                    myToast.show();
                     login();
-
                 }
                 else if(result_msg.equals("중복 로그인")){
-                    Toast myToast = Toast.makeText(getApplicationContext(),"중복 로그인", Toast.LENGTH_SHORT);
+                    Toast myToast = Toast.makeText(getApplicationContext(),"이미 로그인 중입니다.", Toast.LENGTH_SHORT);
                     myToast.show();
                 }
                 else if(result_msg.equals("존재하지 않는 계정입니다.")){
-                    Toast myToast = Toast.makeText(getApplicationContext(),"존재하지 않는 계정", Toast.LENGTH_SHORT);
+                    Toast myToast = Toast.makeText(getApplicationContext(),"존재하지 않는 계정입니다.", Toast.LENGTH_SHORT);
                     myToast.show();
                 }
                 else{
-                    Toast myToast = Toast.makeText(getApplicationContext(),"비밀번호 틀림", Toast.LENGTH_SHORT);
+                    Toast myToast = Toast.makeText(getApplicationContext(),"비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT);
                     myToast.show();
                 }
-                /*if((id_textView.getText().toString().equals(str)) && (password_textView.getText().toString().equals(str))){ //문자열 비교 equals(), getText() 가 반환하는 것은 문자열이 아님
-                    Intent intent = new Intent(LoginPage.this, MainActivity.class); //파라메터는 현재 액티비티, 전환될 액티비티
-                    MyApplication.user_id = id_textView.getText().toString();
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent); //엑티비티 요청
-                }
-                else if((id_textView.getText().toString().equals("")) || password_textView.getText().toString().equals("")){
-                    Toast myToast = Toast.makeText(getApplicationContext(),"아이디나 패스워드를 입력하지 않았습니다.", Toast.LENGTH_SHORT);
-                    myToast.show();
-                }
-                else {
-                    Toast myToast = Toast.makeText(getApplicationContext(),"아이디와 비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT);
-                    myToast.show();
-                }*/
             }
         });
 
@@ -135,10 +118,6 @@ public class LoginPage extends Activity {
         });
     }
 
-    /*public void syncCookeFromCookieManagerToHttpClient(String url){
-        String cookieString = cookieManager.getCookie(url);
-        CookieStore cs =
-    }*/
 
     @Override
     protected void onStart() {
@@ -225,7 +204,6 @@ public class LoginPage extends Activity {
 
                     getCookieHeader();
                     response = builder.toString();
-                    System.out.println(response);
                 }
                 catch (IOException e) {
                     e.printStackTrace();
