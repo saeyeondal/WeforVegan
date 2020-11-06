@@ -74,7 +74,7 @@ public class LoginPage extends Activity {
                 try {
                     response = httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/login", "id", uid, "pwd", passwd).get();
                     JsonParser json_result= new JsonParser();
-                    result_msg = json_result.login_parse(response);
+                    result_msg = json_result.message_parse(response);
                     Toast myToast = Toast.makeText(getApplicationContext(),result_msg, Toast.LENGTH_SHORT);
                     myToast.show();
                 } catch (ExecutionException e) {
@@ -258,14 +258,12 @@ public class LoginPage extends Activity {
             SharedPreferences pref = getApplicationContext().getSharedPreferences("sessionCookie", Context.MODE_PRIVATE);
             String sessionid = pref.getString("sessionid", null);
             if(sessionid != null){
-                Log.d("weforveganheader", "세션 아이디" + sessionid + "가 요청 헤더에 포함 되었습니다.");
                 httpCon.setRequestProperty("Cookie", sessionid);
             }
         }
 
         private void getCookieHeader(){
             List<String> cookies = httpCon.getHeaderFields().get("Set-Cookie");
-            Log.d("weforveganheader", "처음 로그인하여 세션 아이디를 pref에 넣었습니다." + cookies);
             if(cookies != null){
                 String sessionid = "";
                 for(int i=0; i<cookies.size(); i++)
@@ -277,11 +275,6 @@ public class LoginPage extends Activity {
         private void setSessionIdInSharedPref(String sessionid){
             SharedPreferences pref = getApplicationContext().getSharedPreferences("sessionCookie", Context.MODE_PRIVATE);
             SharedPreferences.Editor edit = pref.edit();
-            if(pref.getString("sessionid", null) == null)
-                Log.d("weforveganheader", "처음 로그인하여 세션 아이디를 pref에 넣었습니다." + sessionid);
-            else if(!pref.getString("sessionid", null).equals(sessionid)){
-                Log.d("weforveganheader", "기존의 세션 아이디"+pref.getString("sessionid", null) + "가 만료되어서 서버의 세션 아이디 " + sessionid + " 로 교체 되었습니다.");
-            }
 
             edit.putString("sessionid", sessionid);
             edit.apply();

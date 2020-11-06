@@ -140,8 +140,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if(id == R.id.nav_logout){
             GetRequest httpTask = new GetRequest(getApplicationContext());
+            String result_msg = "";
             try {
                 String response = httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/logout").get();
+                JsonParser json_result= new JsonParser();
+                result_msg = json_result.message_parse(response);
             } catch (ExecutionException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
@@ -151,9 +154,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             SessionManagement sessionManagement = new SessionManagement(MainActivity.this);
             sessionManagement.removeSession();
 
-            Intent intent = new Intent(this, LoginPage.class); //파라메터는 현재 액티비티, 전환될 액티비티
-            LoginPage.logState = "logout";
-            startActivity(intent); //엑티비티 요청
+            if(result_msg.equals("로그아웃 성공")){
+                Intent intent = new Intent(this, LoginPage.class); //파라메터는 현재 액티비티, 전환될 액티비티
+                LoginPage.logState = "logout";
+                startActivity(intent); //엑티비티 요청
+            }
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
