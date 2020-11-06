@@ -1,6 +1,7 @@
 package com.example.weforvegan;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,8 @@ public class MypageFrag extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.my_page, container, false);
 
+        Log.d("LOG", "마이페이지");
+
         final EditText usr_id_txt = (EditText)rootView.findViewById(R.id.edit_id);
         final EditText usr_pwd_txt = (EditText)rootView.findViewById(R.id.edit_pwd);
         final EditText usr_pwd_check_txt = (EditText)rootView.findViewById(R.id.edit_pwd_check);
@@ -45,24 +48,26 @@ public class MypageFrag extends Fragment {
 
         GetRequest httpTask = new GetRequest(getActivity().getApplicationContext());
         try {
-            String response = httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/mypage?").get();
+            Log.d("LOG", "보냄");
+            String response = httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/mypage").get();
+            Log.d("LOG", "RESPONSE: " + response);
             JsonParser json_result= new JsonParser();
-            System.out.println(response);
             String[] user_inform = new String[7];
             user_inform = json_result.inform_parse(response);
-            usr_id = user_inform[0];
+            /*usr_id = user_inform[0];
             usr_pwd = user_inform[1];
             usr_phone = user_inform[2];
-            usr_vegantype = user_inform[5];
+            usr_vegantype = user_inform[5];*/
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        usr_id_txt.setText(usr_id);
-        usr_pwd_txt.setText(usr_id);
-        usr_phone_txt.setText(usr_phone);
+
+       // usr_id_txt.setText(usr_id);
+       // usr_pwd_txt.setText(usr_id);
+       // usr_phone_txt.setText(usr_phone);
 
 /* 갤러리에서 이미지 가져오는 부분 삭제함
         imageView.setOnClickListener(new View.OnClickListener(){
@@ -74,7 +79,7 @@ public class MypageFrag extends Fragment {
             }
         });
 */
-        if(usr_vegantype.equals("비건")) {
+        /*if(usr_vegantype.equals("비건")) {
             vegan1_1.setVisibility(View.GONE);
             vegan1_2.setVisibility(View.VISIBLE);
         }
@@ -89,7 +94,7 @@ public class MypageFrag extends Fragment {
         else if(usr_vegantype.equals("락토오보")) {
             vegan4_1.setVisibility(View.GONE);
             vegan4_2.setVisibility(View.VISIBLE);
-        }
+        }*/
 
         vegan1_1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,10 +156,10 @@ public class MypageFrag extends Fragment {
 
         saveButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                if(usr_pwd_txt.getText().toString().equals(usr_pwd_check_txt.getText().toString())){
+                /*if(usr_pwd_txt.getText().toString().equals(usr_pwd_check_txt.getText().toString())){
                     PostRequest request = new PostRequest(getActivity().getApplicationContext());
                     try {
-                        String response = request.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/text1.php", "id", usr_id_txt.getText().toString(),
+                        String response = request.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/mypage", "id", usr_id_txt.getText().toString(),
                                 "pwd", usr_pwd_txt.getText().toString(), "name", usr_phone_txt.getText().toString(), "vegantype", usr_vegantype_txt).get();
                         System.out.println("회원 정보 수정: \n" + response);
                     } catch (ExecutionException e) {
@@ -168,7 +173,7 @@ public class MypageFrag extends Fragment {
                 else{
                     Toast myToast = Toast.makeText(getContext(),"비밀번호 두 개가 일치하지 않습니다.", Toast.LENGTH_SHORT);
                     myToast.show();
-                }
+                }*/
             }
         });
         return rootView;

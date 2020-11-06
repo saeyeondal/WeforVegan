@@ -26,15 +26,18 @@ public class GetRequest extends AsyncTask<String, Void, String> {
         String result = null;
         try{
             URL url = new URL(urlstr[0]);
+            Log.d("LOG", "들어옴");
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
             con.setRequestMethod("GET");
             con.setRequestProperty("Accept-Charset", "UTF-8");
             con.setDoInput(true);
 
+            Log.d("LOG", "보내는 중");
             SharedPreferences pref = get_context.getSharedPreferences("sessionCookie", Context.MODE_PRIVATE);
             String sessionid = pref.getString("sessionid", null);
             if(sessionid != null){
                 con.setRequestProperty("Cookie", sessionid);
+                Log.d("LOG", "보냈음");
             }
 
             InputStreamReader inputStrteam = new InputStreamReader(con.getInputStream(), "UTF-8");
@@ -49,9 +52,11 @@ public class GetRequest extends AsyncTask<String, Void, String> {
             reader.close();
         }
         catch (MalformedURLException e) {
+            System.out.println("예외1");
             e.printStackTrace();
         }
         catch (Exception e){
+            System.out.println("예외2");
             e.printStackTrace();
         }
         return result;
