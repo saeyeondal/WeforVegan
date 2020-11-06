@@ -37,4 +37,23 @@ public class JsonParser {
         }
         return userArray;
     }
+
+    //LikeRecipePage.java 에서 사용
+    public static String[] like_receipe_parse(String jsonString){
+        String[] userArray = null;
+
+        try{
+            JSONArray jsonArray = new JSONObject(jsonString).getJSONArray("message");
+            userArray = new String[3];
+            for(int i=0; i<jsonArray.length(); i++) {
+                JSONObject location = jsonArray.getJSONObject(i);
+                userArray[0] = location.optString("rp_idx");
+                userArray[1] = location.optString("rp_name");
+                userArray[2] = location.optString("rp_source");
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return userArray;
+    }
 }

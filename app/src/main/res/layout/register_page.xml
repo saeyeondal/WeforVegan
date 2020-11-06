@@ -159,6 +159,7 @@
                     android:textStyle="bold" />
 
                 <RadioGroup
+                    android:id="@+id/register_page_rgroup"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
@@ -233,7 +234,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/register_email"
+                    android:id="@+id/register_phone"
                     android:layout_width="230dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="20dp"

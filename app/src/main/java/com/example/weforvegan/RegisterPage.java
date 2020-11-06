@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,13 +31,14 @@ import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
 public class RegisterPage extends Activity {
-    TextView id_textview, password_textview, password_check, email_textView;
+    TextView id_textview, password_textview, password_check, phone_textView;
     Button id_check;
     Button registerBtn;
     Button vegan1, vegan2, lacto1, lacto2, ovo1, ovo2, lacto_ovo1, lacto_ovo2;
-    RadioButton female;
-    RadioButton male;
+    RadioGroup radioGroup;
+    RadioButton male, female;
 
+    String vegan_type;
     static Integer vegetarian_state = 0;
 
     public void onCreate(Bundle savedInstance){
@@ -46,8 +48,11 @@ public class RegisterPage extends Activity {
         id_textview = (TextView)findViewById(R.id.register_page_id);
         password_textview= (TextView)findViewById(R.id.register_page_password);
         password_check = (TextView)findViewById(R.id.register_page_password_check);
-        email_textView = (TextView)findViewById(R.id.register_email);
+        phone_textView = (TextView)findViewById(R.id.register_phone);
         id_check = (Button)findViewById(R.id.id_check);
+        radioGroup = (RadioGroup)findViewById(R.id.register_page_rgroup);
+        male = (RadioButton)findViewById(R.id.register_page_male);
+        female = (RadioButton)findViewById(R.id.register_page_female);
         registerBtn = (Button)findViewById(R.id.register);
 
         vegan1 = (Button)findViewById(R.id.vegan1_1);
@@ -89,6 +94,9 @@ public class RegisterPage extends Activity {
             }
         });
 
+        RadioButton rd = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
+        final String rd_s = rd.getText().toString();
+
         vegan1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,6 +109,7 @@ public class RegisterPage extends Activity {
                 ovo2.setVisibility(View.GONE);
                 lacto_ovo2.setVisibility(View.GONE);
 
+                vegan_type = "비건";
                 vegetarian_state = 0;
             }
         });
@@ -117,6 +126,7 @@ public class RegisterPage extends Activity {
                 ovo2.setVisibility(View.GONE);
                 lacto_ovo2.setVisibility(View.GONE);
 
+                vegan_type = "락토";
                 vegetarian_state = 1;
             }
         });
@@ -133,6 +143,7 @@ public class RegisterPage extends Activity {
                 lacto2.setVisibility(View.GONE);
                 lacto_ovo2.setVisibility(View.GONE);
 
+                vegan_type = "오보";
                 vegetarian_state = 2;
             }
         });
@@ -149,6 +160,7 @@ public class RegisterPage extends Activity {
                 ovo2.setVisibility(View.GONE);
                 lacto2.setVisibility(View.GONE);
 
+                vegan_type = "락토오보";
                 vegetarian_state = 3;
             }
         });
@@ -170,8 +182,8 @@ public class RegisterPage extends Activity {
                             password_textview.getText().toString(), email_textView.getText().toString(), "여자", "20대", "락토오보");
                             */
                             try {
-                                response = httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/join", "id", "my test", "pwd", "pig", "name", "01000101", "sex", "여자", "birth",
-                                        "20대", "vegantype", "락토오보").get();
+                                response = httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/join", "id", id_textview.getText().toString(),
+                                        "pwd", password_textview.getText().toString(), "name",phone_textView.getText().toString(), "sex", rd_s, "birth", mSpinner.getSelectedItem().toString(), "vegantype", vegan_type).get();
                             } catch (ExecutionException e) {
                                 e.printStackTrace();
                             } catch (InterruptedException e) {
@@ -203,7 +215,7 @@ public class RegisterPage extends Activity {
             return false;
         else if(password_textview.getText().toString().trim().equals(""))
             return false;
-        else if(email_textView.getText().toString().trim().equals(""))
+        else if(phone_textView.getText().toString().trim().equals(""))
             return false;
         else
             return true;

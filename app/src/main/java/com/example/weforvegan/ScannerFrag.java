@@ -18,15 +18,34 @@ import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class ScannerFrag extends Fragment {
     private CaptureManager capture;
     private DecoratedBarcodeView barcodeScannerView;
+    String response="";
+    String pt_name, pt_rwmtr;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.scanner_frag, container, false);
+
+        GetRequest httpTask = new GetRequest(getActivity().getApplicationContext());
+        try {
+            response = httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/text1.php?").get();
+            JsonParser json_result= new JsonParser();
+            System.out.println(response);
+            String[] barcode_inform = new String[2]; //pt_name, pt_rwmtr
+            barcode_inform = json_result.inform_parse(response);
+            pt_name = barcode_inform[0];
+            pt_rwmtr = barcode_inform[1];
+
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         barcodeScannerView = (DecoratedBarcodeView)rootView.findViewById(R.id.barcode);
 

@@ -51,6 +51,7 @@
                                 tools:srcCompat="@drawable/manrecipe" />
 
                             <Button
+                                android:id="@+id/heart1"
                                 android:layout_width="25dp"
                                 android:layout_height="25dp"
                                 android:layout_gravity="bottom|end"
@@ -67,6 +68,7 @@
                                 tools:srcCompat="@drawable/manrecipe" />
 
                             <Button
+                                android:id="@+id/heart2"
                                 android:layout_width="25dp"
                                 android:layout_height="25dp"
                                 android:layout_gravity="bottom|end"
@@ -83,6 +85,7 @@
                                 tools:srcCompat="@drawable/instagram" />
 
                             <Button
+                                android:id="@+id/heart3"
                                 android:layout_width="25dp"
                                 android:layout_height="25dp"
                                 android:layout_gravity="bottom|end"
@@ -163,6 +166,7 @@
                             android:layout_height="100dp"
                             tools:srcCompat="@drawable/twitter" />
                         <Button
+                            android:id="@+id/heart4"
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_gravity="bottom|end"
@@ -179,6 +183,7 @@
                             android:layout_height="100dp"
                             tools:srcCompat="@drawable/instagram" />
                         <Button
+                            android:id="@+id/heart5"
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_gravity="bottom|end"
@@ -195,6 +200,7 @@
                             android:layout_height="100dp"
                             tools:srcCompat="@drawable/twitter" />
                         <Button
+                            android:id="@+id/heart6"
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_gravity="bottom|end"
@@ -208,6 +214,7 @@
                     android:paddingLeft="5dp">
 
                     <TextView
+                        android:id="@+id/textView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="트위터"
@@ -215,6 +222,7 @@
                         android:textSize="9dp"
                         android:textStyle="bold" />
                     <TextView
+                        android:id="@+id/textView5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="인스타그램"
@@ -222,6 +230,7 @@
                         android:textStyle="bold"
                         android:textSize="9dp"/>
                     <TextView
+                        android:id="@+id/textView6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="트위터"
