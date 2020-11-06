@@ -25,7 +25,10 @@ import java.util.concurrent.ExecutionException;
 
 public class LikeRecipePage extends Fragment {
     Handler handler = new Handler();
-    String rp_idx, rp_name, rp_source;
+    String api_rp_idx, api_rp_name, api_rp_source;
+    String sns_rp_idx, sns_rp_name, sns_rp_source;
+    static int api_recipe_count;
+    static int sns_recipe_count;
 
     @Nullable
     @Override
@@ -62,12 +65,24 @@ public class LikeRecipePage extends Fragment {
             String response = httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/heart").get();
             JsonParser json_result= new JsonParser();
             System.out.println(response);
-            String[] recipe_inform = new String[3];
-            recipe_inform = json_result.like_receipe_parse(response);
-            rp_idx = recipe_inform[0];
-            rp_name = recipe_inform[1];
-            rp_source = recipe_inform[2];
-            System.out.println( rp_idx+ rp_name+ rp_source);
+
+            String[] api_recipe_inform = new String[3];
+            String[] sns_recipe_inform = new String[3];
+
+            api_recipe_inform = json_result.like_receipe_parse1(response);
+            sns_recipe_inform = json_result.like_receipe_parse2(response);
+
+            api_rp_idx = api_recipe_inform[0];
+            api_rp_name = api_recipe_inform[1];
+            api_rp_source = api_recipe_inform[2];
+
+            sns_rp_idx = sns_recipe_inform[0];
+            sns_rp_name = sns_recipe_inform[1];
+            sns_rp_source = sns_recipe_inform[2];
+
+            System.out.println("from api:"+ api_rp_idx+ api_rp_name+ api_rp_source);
+            System.out.println("from sns:"+ sns_rp_idx+ sns_rp_name+ sns_rp_source);
+
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

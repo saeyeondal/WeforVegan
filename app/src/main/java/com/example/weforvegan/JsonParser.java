@@ -41,21 +41,43 @@ public class JsonParser {
     }
 
     //LikeRecipePage.java 에서 사용
-    public static String[] like_receipe_parse(String jsonString){
-        String[] userArray = null;
+    public static String[] like_receipe_parse1(String jsonString){
+        String[] api_recipeArray = null;
 
         try{
-            JSONArray jsonArray = new JSONObject(jsonString).getJSONArray("message");
-            userArray = new String[3];
-            for(int i=0; i<jsonArray.length(); i++) {
-                JSONObject location = jsonArray.getJSONObject(i);
-                userArray[0] = location.optString("rp_idx");
-                userArray[1] = location.optString("rp_name");
-                userArray[2] = location.optString("rp_source");
+            JSONArray api_jsonArray = new JSONObject(jsonString).getJSONArray("api_recipe");
+            api_recipeArray = new String[3];
+            LikeRecipePage.api_recipe_count = api_jsonArray.length();
+
+            for(int i=0; i<api_jsonArray.length(); i++) {
+                JSONObject location = api_jsonArray.getJSONObject(i);
+                api_recipeArray[0] = location.optString("recipe_rp_idx");
+                api_recipeArray[1] = location.optString("recipe_rp_name");
+                api_recipeArray[2] = location.optString("recipe_rp_source");
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return userArray;
+        return api_recipeArray;
+    }
+    //LikeRecipePage.java 에서 사용
+    public static String[] like_receipe_parse2(String jsonString){
+        String[] sns_recipeArray = null;
+
+        try{
+            JSONArray api_jsonArray = new JSONObject(jsonString).getJSONArray("sns_recipe");
+            sns_recipeArray = new String[3];
+            LikeRecipePage.sns_recipe_count = api_jsonArray.length();
+
+            for(int i=0; i<api_jsonArray.length(); i++) {
+                JSONObject location = api_jsonArray.getJSONObject(i);
+                sns_recipeArray[0] = location.optString("recipe_rp_idx");
+                sns_recipeArray[1] = location.optString("recipe_rp_name");
+                sns_recipeArray[2] = location.optString("recipe_rp_source");
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return sns_recipeArray;
     }
 }
