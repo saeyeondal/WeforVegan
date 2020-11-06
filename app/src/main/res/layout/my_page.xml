@@ -58,11 +58,10 @@
                 android:ems="8"
                 android:textAlignment="center"
                 android:hint=" 10-20자 이내 "
-                android:inputType="textPassword"
                 android:textColor="@color/colorBlack"
                 android:textSize="15dp" />
 
-            <Button
+            <!--<Button
                 android:id="@+id/id_check"
                 android:layout_width="70dp"
                 android:layout_height="33dp"
@@ -72,7 +71,7 @@
                 android:gravity="center"
                 android:text="중복확인"
                 android:textColor="@android:color/white"
-                android:textSize="10dp" />
+                android:textSize="10dp" />-->
         </LinearLayout>
         <LinearLayout
             android:layout_marginTop="30dp"
@@ -158,7 +157,6 @@
                 android:ems="8"
                 android:textAlignment="center"
                 android:hint=" - 없이 작성해주세요"
-                android:inputType="textPassword"
                 android:textColor="@color/colorBlack"
                 android:textSize="15dp" />
         </LinearLayout>
@@ -276,7 +274,6 @@
             android:id="@+id/vegan4_2"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginRight="20dp"
             android:background="@drawable/rec_circle"
             android:backgroundTint="@color/colorBlueGreen"
             android:text="락토오보\n채식"

@@ -48,16 +48,14 @@ public class MypageFrag extends Fragment {
 
         GetRequest httpTask = new GetRequest(getActivity().getApplicationContext());
         try {
-            Log.d("LOG", "보냄");
             String response = httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/mypage").get();
-            Log.d("LOG", "RESPONSE: " + response);
             JsonParser json_result= new JsonParser();
             String[] user_inform = new String[7];
             user_inform = json_result.inform_parse(response);
-            /*usr_id = user_inform[0];
+            usr_id = user_inform[0];
             usr_pwd = user_inform[1];
             usr_phone = user_inform[2];
-            usr_vegantype = user_inform[5];*/
+            usr_vegantype = user_inform[5];
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -65,9 +63,10 @@ public class MypageFrag extends Fragment {
         }
 
 
-       // usr_id_txt.setText(usr_id);
-       // usr_pwd_txt.setText(usr_id);
-       // usr_phone_txt.setText(usr_phone);
+       usr_id_txt.setText(usr_id);
+       usr_pwd_txt.setText(usr_pwd);
+       usr_pwd_check_txt.setText(usr_pwd);
+       usr_phone_txt.setText(usr_phone);
 
 /* 갤러리에서 이미지 가져오는 부분 삭제함
         imageView.setOnClickListener(new View.OnClickListener(){
@@ -79,7 +78,7 @@ public class MypageFrag extends Fragment {
             }
         });
 */
-        /*if(usr_vegantype.equals("비건")) {
+        if(usr_vegantype.equals("비건")) {
             vegan1_1.setVisibility(View.GONE);
             vegan1_2.setVisibility(View.VISIBLE);
         }
@@ -94,7 +93,7 @@ public class MypageFrag extends Fragment {
         else if(usr_vegantype.equals("락토오보")) {
             vegan4_1.setVisibility(View.GONE);
             vegan4_2.setVisibility(View.VISIBLE);
-        }*/
+        }
 
         vegan1_1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,24 +155,31 @@ public class MypageFrag extends Fragment {
 
         saveButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                /*if(usr_pwd_txt.getText().toString().equals(usr_pwd_check_txt.getText().toString())){
+                if(usr_pwd_txt.getText().toString().equals(usr_pwd_check_txt.getText().toString())){
                     PostRequest request = new PostRequest(getActivity().getApplicationContext());
                     try {
                         String response = request.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/mypage", "id", usr_id_txt.getText().toString(),
                                 "pwd", usr_pwd_txt.getText().toString(), "name", usr_phone_txt.getText().toString(), "vegantype", usr_vegantype_txt).get();
-                        System.out.println("회원 정보 수정: \n" + response);
+                        JsonParser json_result= new JsonParser();
+                        String response_msg = json_result.message_parse(response);
+                        if(response_msg.equals("정보 수정 성공")){
+                            Toast myToast = Toast.makeText(getContext(),"정보가 수정되었습니다.", Toast.LENGTH_SHORT);
+                            myToast.show();
+                        }
+                        else if(response_msg.equals("아이디 중복")){
+                            Toast myToast = Toast.makeText(getContext(),"이미 존재하는 아이디입니다.", Toast.LENGTH_SHORT);
+                            myToast.show();
+                        }
                     } catch (ExecutionException e) {
                         e.printStackTrace();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    Toast myToast = Toast.makeText(getContext(),"정보가 수정되었습니다.", Toast.LENGTH_SHORT);
-                    myToast.show();
                 }
                 else{
                     Toast myToast = Toast.makeText(getContext(),"비밀번호 두 개가 일치하지 않습니다.", Toast.LENGTH_SHORT);
                     myToast.show();
-                }*/
+                }
             }
         });
         return rootView;
