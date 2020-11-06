@@ -13,12 +13,8 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ba4ca29-a570-4eeb-91cb-db74a6417d3c" name="Default Changelist" comment="정보 수정 완료">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/GetRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/GetRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/JsonParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/MypageFrag.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/MypageFrag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/my_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/my_page.xml" afterDir="false" />
+    <list default="true" id="4ba4ca29-a570-4eeb-91cb-db74a6417d3c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/LoginPage.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,12 +72,21 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/my_page.xml">
           <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="322">
               <caret line="73" column="45" selection-start-line="73" selection-start-column="45" selection-end-line="73" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/LoginPage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-56">
+              <caret line="97" column="92" selection-start-line="97" selection-start-column="92" selection-end-line="97" selection-end-column="92" />
             </state>
           </provider>
         </entry>
@@ -149,24 +154,24 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/ResultFrag.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/SearchFrag.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/PostRequest.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/LoginPage.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/JsonParser.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/GetRequest.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/MypageFrag.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/my_page.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/LoginPage.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="347" />
-    <option name="y" value="185" />
-    <option name="width" value="1220" />
-    <option name="height" value="1224" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1098" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -201,17 +206,6 @@
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="weforvegan" type="cbb59c9e:AndroidPsiDirectoryNode" />
             </path>
-            <path>
-              <item name="WeforVegan" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="WeforVegan" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -222,7 +216,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Panglimi/Panglimi/Panglimi" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -450,15 +444,23 @@
       <option name="project" value="LOCAL" />
       <updated>1604628632584</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="정보 수정 완료">
+      <created>1604630211962</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1604630211963</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Resources Explorer" order="0" sideWeight="0.50091743" side_tool="true" weight="0.29545453" />
       <window_info id="Captures" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.49908257" visible="true" weight="0.2891892" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.49908257" visible="true" weight="0.09054054" />
       <window_info id="Structure" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Designer" order="5" />
@@ -480,7 +482,7 @@
       <window_info anchor="right" id="Palette&#9;" order="2" />
       <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" />
       <window_info anchor="right" id="Gradle" order="4" />
-      <window_info anchor="right" id="Preview" order="5" visible="true" weight="0.2581081" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.2581081" />
     </layout>
     <layout-to-restore>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
@@ -526,7 +528,8 @@
     <MESSAGE value="회원정보 수정 중" />
     <MESSAGE value="회원정보 수정 중 - 아이디 중복 말고 다 한 듯" />
     <MESSAGE value="수정 중" />
-    <option name="LAST_COMMIT_MESSAGE" value="수정 중" />
+    <MESSAGE value="정보 수정 완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="정보 수정 완료" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/small_circle.xml">
@@ -758,13 +761,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/LoginPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="74" column="56" selection-start-line="74" selection-start-column="56" selection-end-line="74" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/SearchFrag.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="700">
@@ -840,6 +836,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="73" column="45" selection-start-line="73" selection-start-column="45" selection-end-line="73" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/weforvegan/LoginPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-56">
+          <caret line="97" column="92" selection-start-line="97" selection-start-column="92" selection-end-line="97" selection-end-column="92" />
         </state>
       </provider>
     </entry>
