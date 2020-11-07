@@ -35,27 +35,33 @@ model = loadModel(model_path)
 
 for row in rows :
     # 이미지 url 저장
-    url = row[0]
-    print(url)    
+    url = row[0]    
     print()
     # url -> image -> data
-    image = url2img(url)
-    image_array = np.asarray(image)
-    normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
-    data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-    # 이미지를 배열로
-    data[0] = normalized_image_array
-    
-    # predict -> y에 저장
-    y = model.predict_classes(data)
-    
-    # 0 == human, 1 == food
-    if ( y==0 ) :
+    try:
+        image = url2img(url)
+        image_array = np.asarray(image)
+        normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
+        data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+        # 이미지를 배열로
+        data[0] = normalized_image_array
+        print(row[0],row[1])
+        # predict -> y에 저장
+        y = model.predict_classes(data)
+        # 0 == human, 1 == food
+        if ( y==0 ) :
+            cursor.execute("delete from snsrecipe where sns_imgurl = '" + url+"'")
+            connect.commit()
+            cursor.execute("delete from recipe where rp_idx="+str(row[1]))
+            connect.commit() 
+            print("삭제")
+    except:
+        # delete
         cursor.execute("delete from snsrecipe where sns_imgurl = '" + url+"'")
-        cursor.execute("delete from recipe where rp_idx="+row[1])
+        connect.commit()
+        cursor.execute("delete from recipe where rp_idx="+str(row[1]))
         connect.commit() 
-        print("삭제")
-        
+        print("사진 URL signature expired, 삭제")  
 connect.close()
 
 
