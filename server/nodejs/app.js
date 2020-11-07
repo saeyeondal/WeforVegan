@@ -14,6 +14,7 @@ const joinRouter = require('./routes/join');
 const mypageRouter = require('./routes/mypage');
 const heartRouter = require('./routes/heart');
 const qnaRouter = require('./routes/qna');
+const rankingRouter = require('./routes/ranking');
 
 const app = express();
 app.set('port',process.env.PORT ||3000);
@@ -50,6 +51,7 @@ app.use('/join',joinRouter);
 app.use('/mypage',mypageRouter);
 app.use('/heart',heartRouter);
 app.use('/qna', qnaRouter);
+app.use('/rank',rankingRouter);
 
 //모든 요청에 대해 다 실행
 app.use((req,res,next)=>{
