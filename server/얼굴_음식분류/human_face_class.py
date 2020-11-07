@@ -20,8 +20,8 @@ def loadModel(model) :
     return classifierLoad 
 
 # DB 연결
-connect = pymysql.connect(host="dbinstance.c4nf0uecennm.us-east-2.rds.amazonaws.com",
-                          port=3306, user="weforvegan", password="sungshin18", db="weforvegan")
+connect = pymysql.connect(host="ㅇㅇㅇ",
+                          port=000, user="ㅇㅇㅇ", password="ㅇㅇㅇ", db="ㅇㅇㅇ")
 cursor = connect.cursor()
 
 # DB에서 사진 url 가져오기
