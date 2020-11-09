@@ -23,13 +23,32 @@ public class RecipeFrag extends AppCompatActivity {
     private WebView wv;
     Button closeBtn;
     static String selectedMenu;
+    Button favorite_btn1;
+    Boolean favorite_selected;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE); // 액션바 없애기
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_frag);
+        favorite_selected = false;
+
         closeBtn = (Button)findViewById(R.id.close_btn);
+        favorite_btn1 = (Button)findViewById(R.id.favorite_btn);
+
+        favorite_btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!favorite_selected) {
+                    favorite_btn1.setSelected(true);
+                    favorite_selected = true;
+                }
+                else {
+                    favorite_btn1.setSelected(false);
+                    favorite_selected = false;
+                }
+            }
+        });
         wv = findViewById(R.id.wv);
         WebSettings webSettings = wv.getSettings();
         webSettings.setJavaScriptEnabled(true);

@@ -22,6 +22,15 @@
             android:text="만개의 레시피"
             android:textColor="@color/colorBlack"
             android:textSize="17dp"/>
+
+        <Button
+            android:id="@+id/favorite_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/favorite"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"/>
     </RelativeLayout>
     <View
         android:layout_width="match_parent"
