@@ -3,25 +3,17 @@ package com.example.weforvegan;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -29,8 +21,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import android.view.Menu;
 
 import java.util.concurrent.ExecutionException;
 
@@ -42,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ResultFrag resultFrag;
     RequestFrag requestFrag;
     RecommendFrag recommendFrag;
-    AddRequestFrag addRequestFrag;
+    AskFragment askFragment;
     LikeRecipePage likeRecipePage;
     DrawerLayout drawer;
     Toolbar toolbar;
@@ -70,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         resultFrag = new ResultFrag();
         requestFrag = new RequestFrag();
         recommendFrag = new RecommendFrag();
-        addRequestFrag = new AddRequestFrag();
+        askFragment = new AskFragment();
         likeRecipePage = new LikeRecipePage();
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("sessionCookie", Context.MODE_PRIVATE);
@@ -95,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if( position == 3 )
             curFragment = mypageFrag;
         else if( position == 4)
-            curFragment = requestFrag;
+            curFragment = askFragment;
         else if( position == 5)
             curFragment = likeRecipePage;
 
@@ -108,9 +98,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (index) {
             case 1:
                 transaction.replace(R.id.container, resultFrag);
-                break;
-            case 2:
-                transaction.replace(R.id.container, addRequestFrag);
                 break;
             case 3:
                 transaction.replace(R.id.container, requestFrag);

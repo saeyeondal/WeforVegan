@@ -21,11 +21,9 @@ public class JsonParser {
     public static String[] inform_parse(String jsonString){
         String[] userArray = null;
 
-        Log.d("LOG", "들어왔어");
         try{
             JSONObject jsonObject = new JSONObject(jsonString);
             JSONObject result = jsonObject.getJSONObject("message");
-            Log.d("LOG", result.toString());
             userArray = new String[7];
             userArray[0] = result.optString("usr_id");
             userArray[1] = result.optString("usr_pw");
@@ -80,4 +78,21 @@ public class JsonParser {
         }
         return sns_recipeArray;
     }
+
+    //api 레시피 가져오는 곳에서 사용
+    /*public static String[] get_api_recipe(String jsonString){
+
+        try{
+            JSONObject jsonObject = new JSONObject(jsonString);
+            JSONObject result = jsonObject.getJSONObject("api_recipe");
+            String api_idx = result.optString("recipe_rp_idx");
+            String api_recipe_name = result.optString("recipe_rp_name");
+            String api_imgurl = result.optString("api_imgurlbig");
+            String api_ingredient = result.optString("api_recipe");
+            String api_reicpe = result.optString("api_ingredient");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return userArray;
+    }*/
 }

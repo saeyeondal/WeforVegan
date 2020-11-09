@@ -36,7 +36,7 @@ public class SearchFrag extends Fragment {
 
         PostRequest request = new PostRequest(getActivity().getApplicationContext());
         try {
-            String response = request.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/text1.php", "BAR_NUM", "8801024949960").get();
+            String response = request.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/Barcode.php", "BAR_NUM", "8801024949960").get();
             System.out.println("바코드: \n" + response);
         } catch (ExecutionException e) {
             e.printStackTrace();
