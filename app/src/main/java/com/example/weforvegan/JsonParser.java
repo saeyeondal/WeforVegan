@@ -68,10 +68,10 @@ public class JsonParser {
             LikeRecipePage.sns_recipe_count = api_jsonArray.length();
 
             for(int i=0; i<api_jsonArray.length(); i++) {
-                JSONObject location = api_jsonArray.getJSONObject(i);
-                sns_recipeArray[0] = location.optString("recipe_rp_idx");
-                sns_recipeArray[1] = location.optString("recipe_rp_name");
-                sns_recipeArray[2] = location.optString("recipe_rp_source");
+                JSONObject sns_recipe = api_jsonArray.getJSONObject(i);
+                sns_recipeArray[0] = sns_recipe.optString("recipe_rp_idx");
+                sns_recipeArray[1] = sns_recipe.optString("recipe_rp_name");
+                sns_recipeArray[2] = sns_recipe.optString("recipe_rp_source");
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -80,19 +80,44 @@ public class JsonParser {
     }
 
     //api 레시피 가져오는 곳에서 사용
-    /*public static String[] get_api_recipe(String jsonString){
-
+    public static ApiRecipe[] get_api_recipe(String jsonString){
+        ApiRecipe[] apiRecipes = null;
         try{
-            JSONObject jsonObject = new JSONObject(jsonString);
-            JSONObject result = jsonObject.getJSONObject("api_recipe");
-            String api_idx = result.optString("recipe_rp_idx");
-            String api_recipe_name = result.optString("recipe_rp_name");
-            String api_imgurl = result.optString("api_imgurlbig");
-            String api_ingredient = result.optString("api_recipe");
-            String api_reicpe = result.optString("api_ingredient");
+            JSONArray api_jsonArray = new JSONObject(jsonString).getJSONArray("api_recipe");
+            apiRecipes = new ApiRecipe[api_jsonArray.length()];
+            for(int i=0; i<api_jsonArray.length(); i++) {
+                JSONObject api_recipes= api_jsonArray.getJSONObject(i);
+                int api_idx = Integer.parseInt(api_recipes.optString("recipe_rp_idx"));
+                String api_recipe_name = api_recipes.optString("recipe_rp_name");
+                String api_imgurl = api_recipes.optString("api_imgurlbig");
+                String api_ingredient = api_recipes.optString("api_recipe");
+                String api_recipe = api_recipes.optString("api_ingredient");
+                System.out.println(Integer.toString(api_idx) + ", " + api_recipe_name + ", " + api_imgurl + ", " + api_ingredient + ", " + api_recipe);
+                apiRecipes[i] = new ApiRecipe(api_idx, api_recipe_name, api_imgurl, api_ingredient, api_recipe);
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return userArray;
-    }*/
+        return apiRecipes;
+    }
+
+    public static SNSRecipe[] get_sns_recipe(String jsonString){
+        SNSRecipe[] snsRecipes = null;
+        try{
+            JSONArray api_jsonArray = new JSONObject(jsonString).getJSONArray("sns_recipe");
+            snsRecipes = new SNSRecipe[api_jsonArray.length()];
+            for(int i=0; i<api_jsonArray.length(); i++) {
+                JSONObject sns_recipes= api_jsonArray.getJSONObject(i);
+                int sns_idx = Integer.parseInt(sns_recipes.optString("recipe_rp_idx"));
+                String sns_recipe_name = sns_recipes.optString("recipe_rp_name");
+                String sns_source = sns_recipes.optString("recipe_rp_source");
+                String sns_url = sns_recipes.optString("sns_url");
+                String sns_imgurl=sns_recipes.optString("sns_imgurl");
+                snsRecipes[i] = new SNSRecipe(sns_idx, sns_recipe_name, sns_url, sns_imgurl, sns_source);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return snsRecipes;
+    }
 }

@@ -1,13 +1,13 @@
 package com.example.weforvegan;
 
 public class SNSRecipe {
-    String snsIdx;
+    int snsIdx;
     String snsUrl;
     String snsImgUrl;
     String snsTitle;
     String source;
 
-    public SNSRecipe(String snsIdx, String snsTitle, String snsUrl, String snsImgUrl, String source){
+    public SNSRecipe(int snsIdx, String snsTitle, String snsUrl, String snsImgUrl, String source){
         this.snsIdx = snsIdx;
         this.snsTitle = snsTitle;
         this.snsImgUrl = snsImgUrl;
@@ -15,11 +15,11 @@ public class SNSRecipe {
         this.source = source;
     }
 
-    public String getSnsIdx() {
+    public int getSnsIdx() {
         return snsIdx;
     }
 
-    public void setSnsIdx(String snsIdx) {
+    public void setSnsIdx(int snsIdx) {
         this.snsIdx = snsIdx;
     }
 

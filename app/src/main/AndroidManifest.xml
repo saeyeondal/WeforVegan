@@ -13,8 +13,7 @@
         android:largeHeap="true"
         android:theme="@style/AppTheme"
         android:allowClearUserData="true"
-        android:hardwareAccelerated="true"
-        android:name=".MyApplication">
+        android:hardwareAccelerated="true">
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
