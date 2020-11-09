@@ -44,14 +44,14 @@ public class JsonParser {
 
         try{
             JSONArray api_jsonArray = new JSONObject(jsonString).getJSONArray("api_recipe");
-            api_recipeArray = new String[3];
+            api_recipeArray = new String[api_jsonArray.length()*3];
             LikeRecipePage.api_recipe_count = api_jsonArray.length();
 
-            for(int i=0; i<api_jsonArray.length(); i++) {
+            for(int i=0; i<api_jsonArray.length(); i=i+3) {
                 JSONObject location = api_jsonArray.getJSONObject(i);
-                api_recipeArray[0] = location.optString("recipe_rp_idx");
-                api_recipeArray[1] = location.optString("recipe_rp_name");
-                api_recipeArray[2] = location.optString("recipe_rp_source");
+                api_recipeArray[i] = location.optString("recipe_rp_idx");
+                api_recipeArray[i+1] = location.optString("recipe_rp_name");
+                api_recipeArray[i+2] = location.optString("recipe_rp_source");
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -64,14 +64,14 @@ public class JsonParser {
 
         try{
             JSONArray api_jsonArray = new JSONObject(jsonString).getJSONArray("sns_recipe");
-            sns_recipeArray = new String[3];
+            sns_recipeArray = new String[api_jsonArray.length()*3];  //sns recipe가 3개면 9개 생성
             LikeRecipePage.sns_recipe_count = api_jsonArray.length();
 
-            for(int i=0; i<api_jsonArray.length(); i++) {
+            for(int i=0; i<api_jsonArray.length(); i=i+3) {
                 JSONObject sns_recipe = api_jsonArray.getJSONObject(i);
-                sns_recipeArray[0] = sns_recipe.optString("recipe_rp_idx");
-                sns_recipeArray[1] = sns_recipe.optString("recipe_rp_name");
-                sns_recipeArray[2] = sns_recipe.optString("recipe_rp_source");
+                sns_recipeArray[i] = sns_recipe.optString("recipe_rp_idx");
+                sns_recipeArray[i+1] = sns_recipe.optString("recipe_rp_name");
+                sns_recipeArray[i+2] = sns_recipe.optString("recipe_rp_source");
             }
         } catch (JSONException e) {
             e.printStackTrace();
