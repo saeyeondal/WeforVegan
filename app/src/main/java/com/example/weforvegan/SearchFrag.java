@@ -131,7 +131,7 @@ public class SearchFrag extends Fragment {
                 //가게 이름: item.getName(), 해시태그 내용: item.getHashtag()
                 Intent intent = new Intent(getActivity(), RecipeFrag.class); //파라메터는 현재 액티비티, 전환될 액티비티
                 intent.putExtra("sns_recipe_url", snsRecipes[position].getSnsUrl());
-                intent.putExtra("sns_recipe_idx", Integer.toString(snsRecipes[position].getSnsIdx()));
+                intent.putExtra("recipe_idx", Integer.toString(snsRecipes[position].getSnsIdx()));
                 intent.putExtra("sns_recipe_src", snsRecipes[position].getSource());
                 startActivity(intent); //엑티비티 요청
             }

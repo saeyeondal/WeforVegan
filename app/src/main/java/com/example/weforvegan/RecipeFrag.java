@@ -27,6 +27,9 @@ public class RecipeFrag extends AppCompatActivity {
     static String selectedMenu;
     Button favorite_btn1;
     Boolean favorite_selected;
+    String recipe_idx;
+    String sns_recipe_url;
+    String sns_recipe_src;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,14 +41,13 @@ public class RecipeFrag extends AppCompatActivity {
         favorite_btn1 = (Button)findViewById(R.id.favorite_btn);
         wv = findViewById(R.id.wv);
 
-        final String recipe_idx = getIntent().getStringExtra("recipe_idx");
-        final String sns_recipe_url = getIntent().getStringExtra("sns_recipe_url");
-        final String sns_recipe_src = getIntent().getStringExtra("sns_recipe_src");
+        recipe_idx = getIntent().getStringExtra("recipe_idx");
+        sns_recipe_url = getIntent().getStringExtra("sns_recipe_url");
+        sns_recipe_src = getIntent().getStringExtra("sns_recipe_src");
 
         GetRequest request = new GetRequest(getApplicationContext());
         try {
             String response = request.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/heart/index?rp_idx=" + recipe_idx).get();
-            System.out.println(response);
             JsonParser jsonParser = new JsonParser();
             String isLike = jsonParser.get_is_like(response);
             if(isLike.equals("true")) {

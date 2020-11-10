@@ -95,7 +95,6 @@ public class JsonParser {
                 String api_imgurl = api_recipes.optString("api_imgurlbig");
                 String api_ingredient = api_recipes.optString("api_recipe");
                 String api_recipe = api_recipes.optString("api_ingredient");
-                System.out.println(Integer.toString(api_idx) + ", " + api_recipe_name + ", " + api_imgurl + ", " + api_ingredient + ", " + api_recipe);
                 apiRecipes[i] = new ApiRecipe(api_idx, api_recipe_name, api_imgurl, api_ingredient, api_recipe);
             }
         } catch (JSONException e) {
