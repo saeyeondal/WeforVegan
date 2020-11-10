@@ -105,7 +105,7 @@ public class LikeRecipePage extends Fragment {
         try {
             String response = httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/heart").get();
             JsonParser json_result= new JsonParser();
-            System.out.println(response);
+            System.out.println("like-recipe-response: " + response);
 
             String[] api_recipe_inform = new String[api_recipe_count*3];
             String[] sns_recipe_inform = new String[sns_recipe_count*3];
