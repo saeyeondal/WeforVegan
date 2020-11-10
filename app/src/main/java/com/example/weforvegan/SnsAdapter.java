@@ -1,9 +1,9 @@
 package com.example.weforvegan;
 
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,37 +12,36 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 //menu_item을 recyclerView에 넣기 위한 adapter 정의
-public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> implements OnMenuItemClickListener{
+public class SnsAdapter extends RecyclerView.Adapter<SnsAdapter.ViewHolder> implements OnMenuItemClickListener_sns {
     public static ArrayList<Menu> items = new ArrayList<Menu>();
 
     public interface OnItemClickLisener{
         void onItemClick(View v, int posision);
     }
 
+    private OnMenuItemClickListener_sns mListener = null;
 
-    private OnMenuItemClickListener mListener = null;
-
-    public void setOnItemClickListener(OnMenuItemClickListener listener){
+    public void setOnItemClickListener(OnMenuItemClickListener_sns listener){
         this.mListener = listener;
     }
 
     @Override
-    public void onItemClick(ViewHolder holder, View view, int position) {
+    public void onItemClick(SnsAdapter.ViewHolder holder, View view, int position) {
         if(mListener != null)
             mListener.onItemClick(holder, view, position);
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+    public SnsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         View itemView = inflater.inflate(R.layout.menu_item, viewGroup, false);
 
-        return new MenuAdapter.ViewHolder(itemView);
+        return new SnsAdapter.ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull SnsAdapter.ViewHolder viewHolder, int position) {
         Menu item = items.get(position);
         viewHolder.setItem(item);
     }
@@ -83,7 +82,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> im
                     int position = getAdapterPosition();
                     if(position != RecyclerView.NO_POSITION){
                         if(mListener != null){
-                            mListener.onItemClick(ViewHolder.this, view, position);
+                            mListener.onItemClick(SnsAdapter.ViewHolder.this, view, position);
                         }
                     }
                 }

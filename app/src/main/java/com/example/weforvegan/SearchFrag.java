@@ -20,8 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.concurrent.ExecutionException;
 
 public class SearchFrag extends Fragment {
-    static final MenuAdapter apiAdapter = new MenuAdapter();
-    static final MenuAdapter snsAdapter = new MenuAdapter();
+    static final ApiAdapter apiAdapter = new ApiAdapter();
+    static final SnsAdapter snsAdapter = new SnsAdapter();
     static TextView searchText;
     Button searchBtn;
     ApiRecipe[] apiRecipes;
@@ -30,7 +30,8 @@ public class SearchFrag extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        MenuAdapter.items.clear();
+        ApiAdapter.items.clear();
+        SnsAdapter.items.clear();
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.search_frag, container, false);
         searchText = (TextView)rootView.findViewById(R.id.search_text);
         searchBtn = (Button)rootView.findViewById(R.id.search_btn);
@@ -98,7 +99,8 @@ public class SearchFrag extends Fragment {
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MenuAdapter.items.clear();
+                ApiAdapter.items.clear();
+                SnsAdapter.items.clear();
                 if(searchText.getText().toString().equals("잡채")){
                     apiAdapter.addItem(new Menu("간장 간장", "api 레시피"));
                     apiAdapter.addItem(new Menu("고추장 잡채", "api 레시피"));
@@ -109,9 +111,9 @@ public class SearchFrag extends Fragment {
             }
         });
 
-        apiAdapter.setOnItemClickListener(new OnMenuItemClickListener() {
+        apiAdapter.setOnItemClickListener(new OnMenuItemClickListener_api() {
             @Override
-            public void onItemClick(MenuAdapter.ViewHolder holder, View view, int position) {
+            public void onItemClick(ApiAdapter.ViewHolder holder, View view, int position) {
                 Menu item = apiAdapter.getItem(position);
                 RecipeFrag.selectedMenu = item.getMenu();
                 //가게 이름: item.getName(), 해시태그 내용: item.getHashtag()
