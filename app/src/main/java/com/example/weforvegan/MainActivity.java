@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     SearchFrag searchFrag;
     ScannerFrag scannerFrag;
     MypageFrag mypageFrag;
-    RecipeFrag recipeFrag;
+    SnsRecipeFrag snsRecipeFrag;
     ResultFrag resultFrag;
     RequestFrag requestFrag;
     RecommendFrag recommendFrag;
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         searchFrag = new SearchFrag();
         scannerFrag = new ScannerFrag();
         mypageFrag = new MypageFrag();
-        recipeFrag = new RecipeFrag();
+        snsRecipeFrag = new SnsRecipeFrag();
         resultFrag = new ResultFrag();
         requestFrag = new RequestFrag();
         recommendFrag = new RecommendFrag();

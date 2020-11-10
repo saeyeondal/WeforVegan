@@ -114,11 +114,13 @@ public class SearchFrag extends Fragment {
         apiAdapter.setOnItemClickListener(new OnMenuItemClickListener_api() {
             @Override
             public void onItemClick(ApiAdapter.ViewHolder holder, View view, int position) {
-                Menu item = apiAdapter.getItem(position);
-                RecipeFrag.selectedMenu = item.getMenu();
                 //가게 이름: item.getName(), 해시태그 내용: item.getHashtag()
-                Intent intent = new Intent(getActivity(), RecipeFrag.class); //파라메터는 현재 액티비티, 전환될 액티비티
-                intent.putExtra("api_recipe_url", apiRecipes[position].getApi_idx());
+                Intent intent = new Intent(getActivity(), ApiRecipeFrag.class); //파라메터는 현재 액티비티, 전환될 액티비티
+                intent.putExtra("recipe_idx", Integer.toString(apiRecipes[position].getApi_idx()));
+                intent.putExtra("api_recipe_name", apiRecipes[position].getApi_recipe_name());
+                intent.putExtra("api_recipe_imgurl", apiRecipes[position].getApi_imgurl());
+                intent.putExtra("api_recipe_ingredient", apiRecipes[position].getApi_ingredient());
+                intent.putExtra("api_recipe_recipe", apiRecipes[position].getApi_recipe());
                 startActivity(intent); //엑티비티 요청
             }
         });
@@ -126,10 +128,8 @@ public class SearchFrag extends Fragment {
         snsAdapter.setOnItemClickListener(new OnMenuItemClickListener_sns() {
             @Override
             public void onItemClick(SnsAdapter.ViewHolder holder, View view, int position) {
-                Menu item = snsAdapter.getItem(position);
-                RecipeFrag.selectedMenu = item.getMenu();
                 //가게 이름: item.getName(), 해시태그 내용: item.getHashtag()
-                Intent intent = new Intent(getActivity(), RecipeFrag.class); //파라메터는 현재 액티비티, 전환될 액티비티
+                Intent intent = new Intent(getActivity(), SnsRecipeFrag.class); //파라메터는 현재 액티비티, 전환될 액티비티
                 intent.putExtra("sns_recipe_url", snsRecipes[position].getSnsUrl());
                 intent.putExtra("recipe_idx", Integer.toString(snsRecipes[position].getSnsIdx()));
                 intent.putExtra("sns_recipe_src", snsRecipes[position].getSource());

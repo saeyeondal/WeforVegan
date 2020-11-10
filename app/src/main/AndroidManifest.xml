@@ -30,7 +30,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterPage"></activity>
-        <activity android:name=".RecipeFrag"></activity>
+        <activity android:name=".SnsRecipeFrag"></activity>
+        <activity android:name=".ApiRecipeFrag"></activity>
         <activity android:name=".LikeRecipePage"></activity>
     </application>
 
