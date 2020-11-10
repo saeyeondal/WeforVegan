@@ -95,7 +95,8 @@ public class JsonParser {
                 String api_imgurl = api_recipes.optString("api_imgurlbig");
                 String api_ingredient = api_recipes.optString("api_recipe");
                 String api_recipe = api_recipes.optString("api_ingredient");
-                apiRecipes[i] = new ApiRecipe(api_idx, api_recipe_name, api_imgurl, api_ingredient, api_recipe);
+                String api_source = api_recipes.optString("api_source");
+                apiRecipes[i] = new ApiRecipe(api_idx, api_recipe_name, api_imgurl, api_ingredient, api_recipe, api_source);
             }
         } catch (JSONException e) {
             e.printStackTrace();

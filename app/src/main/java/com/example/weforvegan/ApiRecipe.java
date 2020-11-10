@@ -6,13 +6,15 @@ public class ApiRecipe {
     String api_imgurl;
     String api_recipe;
     String api_ingredient;
+    String api_source;
 
-    public ApiRecipe(int api_idx, String api_recipe_name, String api_imgurl, String api_ingredient, String api_recipe){
+    public ApiRecipe(int api_idx, String api_recipe_name, String api_imgurl, String api_ingredient, String api_recipe, String api_source){
         this.api_idx = api_idx;
         this.api_recipe_name = api_recipe_name;
         this.api_imgurl = api_imgurl;
         this.api_recipe = api_recipe;
         this.api_ingredient = api_ingredient;
+        this.api_source = api_source;
     }
 
     public int getApi_idx() {
@@ -54,4 +56,9 @@ public class ApiRecipe {
     public void setApi_recipe(String api_recipe) {
         this.api_recipe = api_recipe;
     }
+
+    public String getApi_source(){return api_source;}
+
+    public void setApi_source(String api_source) {this.api_source = api_source;}
+
 }
