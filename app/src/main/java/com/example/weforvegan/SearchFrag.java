@@ -118,7 +118,21 @@ public class SearchFrag extends Fragment {
                 RecipeFrag.selectedMenu = item.getMenu();
                 //가게 이름: item.getName(), 해시태그 내용: item.getHashtag()
                 Intent intent = new Intent(getActivity(), RecipeFrag.class); //파라메터는 현재 액티비티, 전환될 액티비티
-                intent.putExtra("recipe_url", apiRecipes[position].getApi_idx());
+                intent.putExtra("api_recipe_url", apiRecipes[position].getApi_idx());
+                startActivity(intent); //엑티비티 요청
+            }
+        });
+
+        snsAdapter.setOnItemClickListener(new OnMenuItemClickListener_sns() {
+            @Override
+            public void onItemClick(SnsAdapter.ViewHolder holder, View view, int position) {
+                Menu item = snsAdapter.getItem(position);
+                RecipeFrag.selectedMenu = item.getMenu();
+                //가게 이름: item.getName(), 해시태그 내용: item.getHashtag()
+                Intent intent = new Intent(getActivity(), RecipeFrag.class); //파라메터는 현재 액티비티, 전환될 액티비티
+                intent.putExtra("sns_recipe_url", snsRecipes[position].getSnsUrl());
+                intent.putExtra("sns_recipe_idx", Integer.toString(snsRecipes[position].getSnsIdx()));
+                intent.putExtra("sns_recipe_src", snsRecipes[position].getSource());
                 startActivity(intent); //엑티비티 요청
             }
         });

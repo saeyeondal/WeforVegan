@@ -19,6 +19,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import java.util.concurrent.ExecutionException;
+
 public class RecipeFrag extends AppCompatActivity {
     private WebView wv;
     Button closeBtn;
@@ -31,10 +33,34 @@ public class RecipeFrag extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE); // 액션바 없애기
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_frag);
-        favorite_selected = false;
 
         closeBtn = (Button)findViewById(R.id.close_btn);
         favorite_btn1 = (Button)findViewById(R.id.favorite_btn);
+        wv = findViewById(R.id.wv);
+
+        final String recipe_idx = getIntent().getStringExtra("recipe_idx");
+        final String sns_recipe_url = getIntent().getStringExtra("sns_recipe_url");
+        final String sns_recipe_src = getIntent().getStringExtra("sns_recipe_src");
+
+        GetRequest request = new GetRequest(getApplicationContext());
+        try {
+            String response = request.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/heart/index?rp_idx=" + recipe_idx).get();
+            System.out.println(response);
+            JsonParser jsonParser = new JsonParser();
+            String isLike = jsonParser.get_is_like(response);
+            if(isLike.equals("true")) {
+                favorite_selected = true;
+                favorite_btn1.setSelected(true);
+            }
+            else {
+                favorite_selected = false;
+                favorite_btn1.setSelected(false);
+            }
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         favorite_btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,28 +68,22 @@ public class RecipeFrag extends AppCompatActivity {
                 if(!favorite_selected) {
                     favorite_btn1.setSelected(true);
                     favorite_selected = true;
+                    PostRequest httpTask = new PostRequest(getApplicationContext());
+                    httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/heart/add", "rp_idx", recipe_idx);
                 }
                 else {
                     favorite_btn1.setSelected(false);
                     favorite_selected = false;
+                    PostRequest httpTask = new PostRequest(getApplicationContext());
+                    httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/heart/cancle", "rp_idx", recipe_idx);
                 }
             }
         });
-        wv = findViewById(R.id.wv);
+
         WebSettings webSettings = wv.getSettings();
         webSettings.setJavaScriptEnabled(true);
         wv.setWebViewClient(new WebViewClient());
-        switch(selectedMenu){
-            case "채식을 위한 고기뺀 '잡채';당면이 불지 않는 비법":
-                wv.loadUrl("https://www.10000recipe.com/recipe/6864194");
-                break;
-            case "2그릇 순삭 가능!! 간단하게 매콤 잡채 만드는 법, 별미 잡채, 잡채밥, 채식":
-                wv.loadUrl("https://www.10000recipe.com/recipe/6907522");
-                break;
-            case "[비건채식] 잡채":
-                wv.loadUrl("https://www.10000recipe.com/recipe/6865656");
-                break;
-        }
+        wv.loadUrl(sns_recipe_url);
 
         closeBtn.setOnClickListener(new View.OnClickListener() {
             @Override

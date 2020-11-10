@@ -40,8 +40,10 @@ public class PostRequest extends AsyncTask<String, Void, String>{
 
             // build jsonObject
             JSONObject jsonObject = new JSONObject();
-            for(int i=1; i<urls.length; i=i+2)
+            for(int i=1; i<urls.length; i=i+2) {
+                System.out.println(urls[i]);
                 jsonObject.accumulate(urls[i], urls[i+1]);
+            }
 
             // convert JSONObject to JSON to String
             json = jsonObject.toString();

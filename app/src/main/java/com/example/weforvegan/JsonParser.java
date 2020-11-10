@@ -62,7 +62,7 @@ public class JsonParser {
         return api_recipeArray;
     }
     //LikeRecipePage.java 에서 사용
-    public static String[] like_receipe_parse2(String jsonString){
+    public String[] like_receipe_parse2(String jsonString){
         String[] sns_recipeArray = null;
 
         try{
@@ -83,7 +83,7 @@ public class JsonParser {
     }
 
     //api 레시피 가져오는 곳에서 사용
-    public static ApiRecipe[] get_api_recipe(String jsonString){
+    public ApiRecipe[] get_api_recipe(String jsonString){
         ApiRecipe[] apiRecipes = null;
         try{
             JSONArray api_jsonArray = new JSONObject(jsonString).getJSONArray("api_recipe");
@@ -104,7 +104,7 @@ public class JsonParser {
         return apiRecipes;
     }
 
-    public static SNSRecipe[] get_sns_recipe(String jsonString){
+    public SNSRecipe[] get_sns_recipe(String jsonString){
         SNSRecipe[] snsRecipes = null;
         try{
             JSONArray api_jsonArray = new JSONObject(jsonString).getJSONArray("sns_recipe");
@@ -122,5 +122,16 @@ public class JsonParser {
             e.printStackTrace();
         }
         return snsRecipes;
+    }
+
+    public String get_is_like(String jsonString){
+        String result = "";
+        try{
+            JSONObject jsonObject = new JSONObject(jsonString);
+            result = jsonObject.getString("isLike");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }
