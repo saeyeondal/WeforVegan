@@ -47,11 +47,14 @@ public class JsonParser {
             api_recipeArray = new String[api_jsonArray.length()*3];
             LikeRecipePage.api_recipe_count = api_jsonArray.length();
 
-            for(int i=0; i<api_jsonArray.length(); i=i+3) {
+            for(int i=0; i< api_jsonArray.length()*3; i=i+3) {
                 JSONObject location = api_jsonArray.getJSONObject(i);
                 api_recipeArray[i] = location.optString("recipe_rp_idx");
                 api_recipeArray[i+1] = location.optString("recipe_rp_name");
                 api_recipeArray[i+2] = location.optString("recipe_rp_source");
+                System.out.println(i+"="+ api_recipeArray[i]);
+                System.out.println(i+"="+api_recipeArray[i+1]);
+                System.out.println(i+"="+api_recipeArray[i+2]);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -67,7 +70,7 @@ public class JsonParser {
             sns_recipeArray = new String[api_jsonArray.length()*3];  //sns recipe가 3개면 9개 생성
             LikeRecipePage.sns_recipe_count = api_jsonArray.length();
 
-            for(int i=0; i<api_jsonArray.length(); i=i+3) {
+            for(int i=0; i<api_jsonArray.length()*3; i=i+3) {
                 JSONObject sns_recipe = api_jsonArray.getJSONObject(i);
                 sns_recipeArray[i] = sns_recipe.optString("recipe_rp_idx");
                 sns_recipeArray[i+1] = sns_recipe.optString("recipe_rp_name");

@@ -27,6 +27,7 @@ public class LikeRecipePage extends Fragment {
     Handler handler = new Handler();
     static int api_recipe_count;
     static int sns_recipe_count;
+    SNSRecipe[] snsRecipes;
 
     @Nullable
     @Override
@@ -112,6 +113,9 @@ public class LikeRecipePage extends Fragment {
             api_recipe_inform = json_result.like_receipe_parse1(response);
             sns_recipe_inform = json_result.like_receipe_parse2(response);
 
+            System.out.println("API:"+ api_recipe_inform);
+            System.out.println("SNS:" + sns_recipe_inform);
+
             String [] api_rp_idx = new String[api_recipe_count];
             String [] api_rp_name = new String[api_recipe_count];
             String [] api_rp_source = new String[api_recipe_count];
@@ -132,6 +136,8 @@ public class LikeRecipePage extends Fragment {
                     if((api_rp_source[j]!= null) && (api_rp_name[j] != null)){
                         ((TextView)rootView.findViewById(source_ids[j])).setText(api_rp_source[j]);
                         ((TextView)rootView.findViewById(name_ids[j])).setText(api_rp_name[j]);
+                        System.out.println("source:"+api_rp_source[j]);
+                        System.out.println("name:" +api_rp_name[j]);
                     }
                 }
             }
@@ -154,12 +160,20 @@ public class LikeRecipePage extends Fragment {
                     else
                         System.out.println("이미지 없음");
 
+                    System.out.println("source:"+sns_rp_source[0]);
+                    System.out.println("name:" +sns_rp_name[0]);
+                    System.out.println("source:"+sns_rp_source[1]);
+                    System.out.println("name:" +sns_rp_name[1]);
+
                     if((sns_rp_source[j]!= null) && (sns_rp_name[j]!=null)){
-                        ((TextView)rootView.findViewById(source_ids[api_recipe_count+j])).setText(api_rp_source[j]);
-                        ((TextView)rootView.findViewById(name_ids[api_recipe_count+j])).setText(api_rp_name[j]);
+                        ((TextView)rootView.findViewById(source_ids[api_recipe_count+j])).setText(sns_rp_source[j]);
+                        ((TextView)rootView.findViewById(name_ids[api_recipe_count+j])).setText(sns_rp_name[j]);
+
                     }
                 }
             }
+
+
 
             System.out.println("from api:"+ api_rp_idx+ api_rp_name+ api_rp_source);
             System.out.println("from sns:"+ sns_rp_idx+ sns_rp_name+ sns_rp_source);
