@@ -56,7 +56,9 @@
                                 android:layout_height="25dp"
                                 android:layout_gravity="bottom|end"
                                 android:background="@drawable/ic_favorite_black_24dp"
-                                android:backgroundTint="@color/colorRed"></Button>
+                                android:backgroundTint="@color/colorRed"
+                                android:visibility="invisible">
+                            </Button>
                         </FrameLayout>
 
                         <FrameLayout android:layout_margin="5dp">
@@ -73,7 +75,8 @@
                                 android:layout_height="25dp"
                                 android:layout_gravity="bottom|end"
                                 android:background="@drawable/ic_favorite_black_24dp"
-                                android:backgroundTint="@color/colorRed"></Button>
+                                android:backgroundTint="@color/colorRed"
+                                android:visibility="invisible"></Button>
                         </FrameLayout>
 
                         <FrameLayout android:layout_margin="5dp">
@@ -90,7 +93,8 @@
                                 android:layout_height="25dp"
                                 android:layout_gravity="bottom|end"
                                 android:background="@drawable/ic_favorite_black_24dp"
-                                android:backgroundTint="@color/colorRed"></Button>
+                                android:backgroundTint="@color/colorRed"
+                                android:visibility="invisible"></Button>
                         </FrameLayout>
                     </TableRow>
 
@@ -174,7 +178,8 @@
                             android:layout_height="25dp"
                             android:layout_gravity="bottom|end"
                             android:background="@drawable/ic_favorite_black_24dp"
-                            android:backgroundTint="@color/colorRed">
+                            android:backgroundTint="@color/colorRed"
+                            android:visibility="invisible">
                         </Button>
                     </FrameLayout>
                     <FrameLayout
@@ -191,7 +196,8 @@
                             android:layout_height="25dp"
                             android:layout_gravity="bottom|end"
                             android:background="@drawable/ic_favorite_black_24dp"
-                            android:backgroundTint="@color/colorRed">
+                            android:backgroundTint="@color/colorRed"
+                            android:visibility="invisible">
                         </Button>
                     </FrameLayout>
                     <FrameLayout
@@ -208,7 +214,8 @@
                             android:layout_height="25dp"
                             android:layout_gravity="bottom|end"
                             android:background="@drawable/ic_favorite_black_24dp"
-                            android:backgroundTint="@color/colorRed">
+                            android:backgroundTint="@color/colorRed"
+                            android:visibility="invisible">
                         </Button>
                     </FrameLayout>
                 </TableRow>

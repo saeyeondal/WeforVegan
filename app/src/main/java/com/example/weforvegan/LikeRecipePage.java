@@ -1,6 +1,7 @@
 package com.example.weforvegan;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -27,6 +28,8 @@ public class LikeRecipePage extends Fragment {
     Handler handler = new Handler();
     static int api_recipe_count;
     static int sns_recipe_count;
+    static ImageView APIImg;
+    static ImageView SNSImg;
 
     @Nullable
     @Override
@@ -71,10 +74,25 @@ public class LikeRecipePage extends Fragment {
             String response = httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/heart").get();
             JsonParser json_result= new JsonParser();
 
-            ApiRecipe[] apiRecipeLike = json_result.get_api_recipe(response);
+            final ApiRecipe[] apiRecipeLike = json_result.get_api_recipe(response);
+
             for(int i=0; i< apiRecipeLike.length; i++){
-                    if((apiRecipeLike.length+i) == 7) break;
-                    ((ImageView)rootView.findViewById(img_ids[i])).setImageResource(R.drawable.api);
+                if((apiRecipeLike.length+i) == 7) break;
+                ((ImageView)rootView.findViewById(img_ids[i])).setImageResource(R.drawable.api);
+                ((Button)rootView.findViewById(heart_ids[i])).setVisibility(View.VISIBLE);
+                final int finalI = i;
+                ((ImageView)rootView.findViewById(img_ids[i])).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(getActivity(), ApiRecipeFrag.class); //파라메터는 현재 액티비티, 전환될 액티비티
+                            intent.putExtra("recipe_idx", Integer.toString(apiRecipeLike[finalI].getApi_idx()));
+                            intent.putExtra("api_recipe_name", apiRecipeLike[finalI].getApi_recipe_name());
+                            intent.putExtra("api_recipe_imgurl", apiRecipeLike[finalI].getApi_imgurl());
+                            intent.putExtra("api_recipe_ingredient", apiRecipeLike[finalI].getApi_ingredient());
+                            intent.putExtra("api_recipe_recipe", apiRecipeLike[finalI].getApi_recipe());
+                            startActivity(intent);
+                        }
+                    });
                     if((apiRecipeLike[i].getApi_source()!= null) && (apiRecipeLike[i].getApi_recipe_name() != null)){
                         ((TextView)rootView.findViewById(source_ids[i])).setText("api");
                         ((TextView)rootView.findViewById(name_ids[i])).setText(apiRecipeLike[i].getApi_recipe_name());
@@ -82,11 +100,13 @@ public class LikeRecipePage extends Fragment {
                     }
             }
 
-            SNSRecipe[] snsRecipeLike = json_result.get_sns_recipe(response);
+            final SNSRecipe[] snsRecipeLike = json_result.get_sns_recipe(response);
             for(int i=0; i< snsRecipeLike.length; i++){
+                final int finalI = i;
                 System.out.println(snsRecipeLike[i].getSource() + snsRecipeLike[i].getSnsTitle());
                 if((apiRecipeLike.length + i + 1) >= 7) continue;
                 System.out.println("Api 길이:"+ apiRecipeLike.length + "SNS 길이" +  snsRecipeLike.length);
+                ((Button)rootView.findViewById(heart_ids[apiRecipeLike.length+i])).setVisibility(View.VISIBLE);
                 if((snsRecipeLike[i].getSource() != null) && (snsRecipeLike[i].getSource().equals("twitter"))){
                     ((ImageView)rootView.findViewById(img_ids[apiRecipeLike.length+i])).setImageResource(R.drawable.twitter);
                 }
@@ -102,6 +122,17 @@ public class LikeRecipePage extends Fragment {
                     System.out.println("source:"+ snsRecipeLike[i].getSource());
                     System.out.println("name:" + snsRecipeLike[i].getSnsTitle());
                 }
+
+                ((ImageView)rootView.findViewById(img_ids[apiRecipeLike.length+i])).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getActivity(), SnsRecipeFrag.class); //파라메터는 현재 액티비티, 전환될 액티비티
+                        intent.putExtra("sns_recipe_url", snsRecipeLike[finalI].getSnsUrl());
+                        intent.putExtra("recipe_idx", Integer.toString(snsRecipeLike[finalI].getSnsIdx()));
+                        intent.putExtra("sns_recipe_src", snsRecipeLike[finalI].getSource());
+                        startActivity(intent); //엑티비티 요청
+                    }
+                });
             }
 
         } catch (ExecutionException e) {
