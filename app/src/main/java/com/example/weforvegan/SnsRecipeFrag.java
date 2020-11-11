@@ -38,6 +38,8 @@ public class SnsRecipeFrag extends AppCompatActivity {
 
         recipe_idx = getIntent().getStringExtra("recipe_idx");
         sns_recipe_url = getIntent().getStringExtra("sns_recipe_url");
+        sns_recipe_url = sns_recipe_url.replace("'", "");
+        System.out.println(sns_recipe_url);
         sns_recipe_src = getIntent().getStringExtra("sns_recipe_src");
         sns_recipe_src_txt.setText(sns_recipe_src);
 
