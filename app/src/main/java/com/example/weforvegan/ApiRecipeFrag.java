@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -33,7 +34,7 @@ public class ApiRecipeFrag extends AppCompatActivity {
     TextView api_recipe_name_txt;
     TextView api_recipe_ingredient_txt;
     TextView api_recipe_recipe_txt;
-    Handler handler = new Handler();
+    Bitmap bm;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,21 +54,29 @@ public class ApiRecipeFrag extends AppCompatActivity {
         api_recipe_ingredient = getIntent().getStringExtra("api_recipe_ingredient");
         api_recipe_recipe = getIntent().getStringExtra("api_recipe_recipe");
 
+        final Handler handler = new Handler(){
+            public void handleMessage(Message msg){
+                final ImageView api_recipe_imgurl_img = (ImageView)findViewById(R.id.api_recipe_img);
+                Handler api_handler = new Handler();
+                api_handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        api_recipe_imgurl_img.setImageBitmap(bm);
+                    }
+                });
+            }
+        };
+
         Thread imgload = new Thread(new Runnable() {
             @Override
             public void run() {
-                try{
-                    final ImageView api_recipe_imgurl_img = (ImageView)findViewById(R.id.api_recipe_img);
-                    URL url = new URL(api_recipe_imgurl);
+                URL url = null;
+                try {
+                    url = new URL(api_recipe_imgurl);
                     InputStream is = url.openStream();
-                    final Bitmap bm = BitmapFactory.decodeStream(is);
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            api_recipe_imgurl_img.setImageBitmap(bm);
-                        }
-                    });
-                    api_recipe_imgurl_img.setImageBitmap(bm);
+                    bm = BitmapFactory.decodeStream(is);
+                    Message handler_msg = handler.obtainMessage();
+                    handler.sendMessage(handler_msg);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
