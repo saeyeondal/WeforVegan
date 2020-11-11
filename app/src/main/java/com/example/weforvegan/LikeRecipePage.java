@@ -94,7 +94,7 @@ public class LikeRecipePage extends Fragment {
                         }
                     });
                     if((apiRecipeLike[i].getApi_source()!= null) && (apiRecipeLike[i].getApi_recipe_name() != null)){
-                        ((TextView)rootView.findViewById(source_ids[i])).setText("api");
+                        ((TextView)rootView.findViewById(source_ids[i])).setText("공공데이터");
                         ((TextView)rootView.findViewById(name_ids[i])).setText(apiRecipeLike[i].getApi_recipe_name());
                         System.out.println("source:"+ apiRecipeLike[i].getApi_recipe_name());
                     }
@@ -134,7 +134,6 @@ public class LikeRecipePage extends Fragment {
                     }
                 });
             }
-
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
