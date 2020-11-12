@@ -31,6 +31,7 @@ public class ScannerFrag extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.scanner_frag, container, false);
 
+        /*
         GetRequest httpTask = new GetRequest(getActivity().getApplicationContext());
         try {
             response = httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/text1.php?").get();
@@ -46,7 +47,7 @@ public class ScannerFrag extends Fragment {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+*/
         barcodeScannerView = (DecoratedBarcodeView)rootView.findViewById(R.id.barcode);
 
         capture = new CaptureManager(getActivity(), barcodeScannerView);

@@ -33,7 +33,7 @@
             android:textSize="23dp"
             android:gravity="center"
             android:layout_marginTop="10dp"
-            android:src="@drawable/product10"/>
+            android:src="@drawable/tomatosauce"/>
 
         <TextView
             android:layout_width="100dp"
@@ -61,18 +61,19 @@
                 android:text="제품명: "
                 android:textSize="15dp"
                 android:textColor="@color/colorBlack"/>
+
             <TextView
                 android:id="@+id/product_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="최현석 페퍼 립 스테이크"
-                android:textSize="15dp"
-                android:textColor="@color/colorBlack"/>
+                android:text="청정원 구운마늘과 양파 토마토 스파게티 소스"
+                android:textColor="@color/colorBlack"
+                android:textSize="15dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="158dp"
+            android:layout_height="89dp"
             android:orientation="horizontal">
 
             <TextView
@@ -86,8 +87,8 @@
             <TextView
                 android:id="@+id/result_text2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="소갈비(미국산)89%,최셰프 페퍼 오일 마리네이드7%[식물성유지{콩기름(콩:외국산)},규소수지],압착올리브유(스페인산),분말검은후추2%(검은후추홀100%:말레이시아산),바질홀,파슬리후레이크,로즈마리홀,d-토코페롤(혼합형),정제수,양파(국내산),과채가공품(베트남산/망고,파파야,용과,파인애플),백설탕,정제소금"
+                android:layout_height="match_parent"
+                android:text="다이스트토마토(토마토, 토마토주스, 구연산, 염화칼슘), 정제수, 토마토페이스트, 양파, 대두유, 설탕, 블랙올리브, 치킨액기스, 정제소금, 마늘, 양파, 흑후추, 대두, 정제소금, 마늘, 밀, 쇠고기, 닭고기, 굴"
                 android:textColor="@color/colorBlack"
                 android:textSize="15dp" />
 
@@ -115,7 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginLeft="20dp"
-                android:text="소갈비, 백설탕"
+                android:text="치킨액기스, 쇠고기, 닭고기, 굴"
                 android:textSize="15dp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"/>

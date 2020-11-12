@@ -21,7 +21,7 @@ public class ResultFrag extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.result_frag, container, false);
         productName = (TextView)rootView.findViewById(R.id.product_name);
         //productName.setText(barcodeNumber);
-
+/*
         PostRequest request = new PostRequest(getActivity().getApplicationContext());
         try {
             String response = request.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/text1.php", "BAR_NUM", "8801024949960").get();
@@ -31,6 +31,7 @@ public class ResultFrag extends Fragment {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+ */
         return rootView;
     }
 }
