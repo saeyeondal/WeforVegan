@@ -116,7 +116,7 @@ public class SearchFrag extends Fragment {
                             byteArrayOutputStream.write(i);
                             i = inputStream.read();
                         }
-                        api_data = new String(byteArrayOutputStream.toByteArray(), "MS949");
+                        api_data = new String(byteArrayOutputStream.toByteArray(), "UTF-8");
                         inputStream.close();
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -131,7 +131,7 @@ public class SearchFrag extends Fragment {
                             byteArrayOutputStream2.write(i2);
                             i2 = inputStream2.read();
                         }
-                        sns_data = new String(byteArrayOutputStream2.toByteArray(), "MS949");
+                        sns_data = new String(byteArrayOutputStream2.toByteArray(), "UTF-8");
                         inputStream2.close();
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -181,8 +181,6 @@ public class SearchFrag extends Fragment {
                 startActivity(intent); //엑티비티 요청
             }
         });
-
-
 
         return rootView;
     }
