@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_toRightOf="@+id/close_btn"
-                android:text="API 레시피"
+                android:text="공공데이터 레시피"
                 android:textColor="@color/colorBlack"
                 android:textSize="17dp"
                 android:layout_centerVertical="true"/>

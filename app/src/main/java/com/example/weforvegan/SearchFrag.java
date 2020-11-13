@@ -17,6 +17,9 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.concurrent.ExecutionException;
 
 public class SearchFrag extends Fragment {
@@ -75,7 +78,7 @@ public class SearchFrag extends Fragment {
         }
 
         for(int i=0; i<apiRecipes.length; i++){
-            apiAdapter.addItem(new Menu(apiRecipes[i].getApi_recipe_name(), "api 레시피"));
+            apiAdapter.addItem(new Menu(apiRecipes[i].getApi_recipe_name(), "공공데이터 레시피"));
         }
 
         for(int i=0; i<snsRecipes.length; i++){
@@ -101,10 +104,52 @@ public class SearchFrag extends Fragment {
             public void onClick(View view) {
                 ApiAdapter.items.clear();
                 SnsAdapter.items.clear();
-                if(searchText.getText().toString().equals("잡채")){
-                    apiAdapter.addItem(new Menu("간장 간장", "api 레시피"));
-                    apiAdapter.addItem(new Menu("고추장 잡채", "api 레시피"));
-                    snsAdapter.addItem(new Menu("sns 레시피", "twiter"));
+                if(searchText.getText().toString().equals("두부")){
+                    JsonParser jsonParser = new JsonParser();
+                    String api_data = null;
+                    InputStream inputStream = getResources().openRawResource(R.raw.api_json);
+                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                    int i;
+                    try{
+                        i = inputStream.read();
+                        while(i != -1){
+                            byteArrayOutputStream.write(i);
+                            i = inputStream.read();
+                        }
+                        api_data = new String(byteArrayOutputStream.toByteArray(), "MS949");
+                        inputStream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    String sns_data = null;
+                    InputStream inputStream2 = getResources().openRawResource(R.raw.sns_json);
+                    ByteArrayOutputStream byteArrayOutputStream2 = new ByteArrayOutputStream();
+                    int i2;
+                    try{
+                        i2 = inputStream2.read();
+                        while(i2 != -1){
+                            byteArrayOutputStream2.write(i2);
+                            i2 = inputStream2.read();
+                        }
+                        sns_data = new String(byteArrayOutputStream2.toByteArray(), "MS949");
+                        inputStream2.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    apiRecipes = jsonParser.get_api_recipe(api_data);
+                    snsRecipes = jsonParser.get_sns_recipe(sns_data);
+
+                    ApiRecipe[] apiRecipes_txt = null;
+                    SNSRecipe[] snsRecipes_txt = null;
+
+                    for(int j=0; j<apiRecipes.length; j++){
+                        apiAdapter.addItem(new Menu(apiRecipes_txt[j].getApi_recipe_name(), "공공데이터 레시피"));
+                    }
+
+                    for(int j=0; j<snsRecipes.length; j++) {
+                        snsAdapter.addItem(new Menu(snsRecipes_txt[j].getSnsTitle(), snsRecipes[j].getSource()));
+                    }
                 }
                 gen_recyclerView.setAdapter(apiAdapter);
                 sns_recyclerView.setAdapter(snsAdapter);
