@@ -29,6 +29,10 @@ public class SearchFrag extends Fragment {
     Button searchBtn;
     ApiRecipe[] apiRecipes;
     SNSRecipe[] snsRecipes;
+    Boolean json_recipe;
+
+    ApiRecipe[] apiRecipes_txt;
+    SNSRecipe[] snsRecipes_txt;
 
     @Nullable
     @Override
@@ -65,6 +69,7 @@ public class SearchFrag extends Fragment {
         DividerItemDecoration dividerItemDecoration2 = new DividerItemDecoration(sns_recyclerView.getContext(), new LinearLayoutManager(getActivity()).getOrientation());
         sns_recyclerView.addItemDecoration(dividerItemDecoration2);
 
+        json_recipe = false;
         GetRequest request = new GetRequest(getActivity().getApplicationContext());
         try {
             String response = request.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/rank").get();
@@ -105,6 +110,7 @@ public class SearchFrag extends Fragment {
                 ApiAdapter.items.clear();
                 SnsAdapter.items.clear();
                 if(searchText.getText().toString().equals("두부")){
+                    json_recipe = false;
                     JsonParser jsonParser = new JsonParser();
                     String api_data = null;
                     InputStream inputStream = getResources().openRawResource(R.raw.api_json);
@@ -137,17 +143,15 @@ public class SearchFrag extends Fragment {
                         e.printStackTrace();
                     }
 
-                    apiRecipes = jsonParser.get_api_recipe(api_data);
-                    snsRecipes = jsonParser.get_sns_recipe(sns_data);
+                    apiRecipes_txt = jsonParser.get_api_recipe(api_data);
+                    snsRecipes_txt = jsonParser.get_sns_recipe(sns_data);
 
-                    ApiRecipe[] apiRecipes_txt = null;
-                    SNSRecipe[] snsRecipes_txt = null;
 
-                    for(int j=0; j<apiRecipes.length; j++){
+                    for(int j=0; j<apiRecipes_txt.length; j++){
                         apiAdapter.addItem(new Menu(apiRecipes_txt[j].getApi_recipe_name(), "공공데이터 레시피"));
                     }
 
-                    for(int j=0; j<snsRecipes.length; j++) {
+                    for(int j=0; j<apiRecipes_txt.length; j++) {
                         snsAdapter.addItem(new Menu(snsRecipes_txt[j].getSnsTitle(), snsRecipes[j].getSource()));
                     }
                 }
@@ -161,11 +165,23 @@ public class SearchFrag extends Fragment {
             public void onItemClick(ApiAdapter.ViewHolder holder, View view, int position) {
                 //가게 이름: item.getName(), 해시태그 내용: item.getHashtag()
                 Intent intent = new Intent(getActivity(), ApiRecipeFrag.class); //파라메터는 현재 액티비티, 전환될 액티비티
-                intent.putExtra("recipe_idx", Integer.toString(apiRecipes[position].getApi_idx()));
-                intent.putExtra("api_recipe_name", apiRecipes[position].getApi_recipe_name());
-                intent.putExtra("api_recipe_imgurl", apiRecipes[position].getApi_imgurl());
-                intent.putExtra("api_recipe_ingredient", apiRecipes[position].getApi_ingredient());
-                intent.putExtra("api_recipe_recipe", apiRecipes[position].getApi_recipe());
+                /*if(json_recipe){
+                    intent.putExtra("recipe_idx", Integer.toString(apiRecipes_txt[position].getApi_idx()));
+                    intent.putExtra("api_recipe_name", apiRecipes_txt[position].getApi_recipe_name());
+                    intent.putExtra("api_recipe_imgurl", apiRecipes_txt[position].getApi_imgurl());
+                    intent.putExtra("api_recipe_ingredient", apiRecipes_txt[position].getApi_ingredient());
+                    intent.putExtra("api_recipe_recipe", apiRecipes_txt[position].getApi_recipe());
+                }
+                else{
+                    intent.putExtra("recipe_idx", Integer.toString(apiRecipes[position].getApi_idx()));
+                    intent.putExtra("api_recipe_name", apiRecipes[position].getApi_recipe_name());
+                    intent.putExtra("api_recipe_imgurl", apiRecipes[position].getApi_imgurl());
+                    intent.putExtra("api_recipe_ingredient", apiRecipes[position].getApi_ingredient());
+                    intent.putExtra("api_recipe_recipe", apiRecipes[position].getApi_recipe());
+                }*/
+
+
+
                 startActivity(intent); //엑티비티 요청
             }
         });
@@ -175,9 +191,21 @@ public class SearchFrag extends Fragment {
             public void onItemClick(SnsAdapter.ViewHolder holder, View view, int position) {
                 //가게 이름: item.getName(), 해시태그 내용: item.getHashtag()
                 Intent intent = new Intent(getActivity(), SnsRecipeFrag.class); //파라메터는 현재 액티비티, 전환될 액티비티
-                intent.putExtra("sns_recipe_url", snsRecipes[position].getSnsUrl());
-                intent.putExtra("recipe_idx", Integer.toString(snsRecipes[position].getSnsIdx()));
-                intent.putExtra("sns_recipe_src", snsRecipes[position].getSource());
+                intent.putExtra("sns_recipe_url", snsRecipes_txt[position].getSnsUrl());
+                intent.putExtra("recipe_idx", Integer.toString(snsRecipes_txt[position].getSnsIdx()));
+                intent.putExtra("sns_recipe_src", snsRecipes_txt[position].getSource());
+                /*
+                if(json_recipe){
+                    intent.putExtra("sns_recipe_url", snsRecipes_txt[position].getSnsUrl());
+                    intent.putExtra("recipe_idx", Integer.toString(snsRecipes_txt[position].getSnsIdx()));
+                    intent.putExtra("sns_recipe_src", snsRecipes_txt[position].getSource());
+                }
+                else{
+                    intent.putExtra("sns_recipe_url", snsRecipes[position].getSnsUrl());
+                    intent.putExtra("recipe_idx", Integer.toString(snsRecipes[position].getSnsIdx()));
+                    intent.putExtra("sns_recipe_src", snsRecipes[position].getSource());
+                }*/
+
                 startActivity(intent); //엑티비티 요청
             }
         });

@@ -94,8 +94,7 @@ public class RegisterPage extends Activity {
             }
         });
 
-        RadioButton rd = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
-        final String rd_s = rd.getText().toString();
+        final RadioButton rd = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
 
         vegan1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,6 +181,7 @@ public class RegisterPage extends Activity {
                             password_textview.getText().toString(), email_textView.getText().toString(), "여자", "20대", "락토오보");
                             */
                             try {
+                                String rd_s = rd.getText().toString();
                                 response = httpTask.execute("http://ec2-18-222-92-67.us-east-2.compute.amazonaws.com:3000/join", "id", id_textview.getText().toString(),
                                         "pwd", password_textview.getText().toString(), "name",phone_textView.getText().toString(), "sex", rd_s, "birth", mSpinner.getSelectedItem().toString(), "vegantype", vegan_type).get();
                             } catch (ExecutionException e) {
