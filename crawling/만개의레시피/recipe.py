@@ -4,8 +4,8 @@ import unicodedata
 import time
 import pymysql
 
-conn = pymysql.connect(host = 'dbinstance.c4nf0uecennm.us-east-2.rds.amazonaws.com', user = 'weforvegan',
-                       password = 'sungshin18', db = 'weforvegan', charset = 'utf8')
+conn = pymysql.connect(host = 'ㅇㅇ', user = 'ㅇㅇ',
+                       password = 'ㅇㅇ', db = 'ㅇㅇ', charset = 'utf8')
 cursor = conn.cursor()
 
 driver = webdriver.Chrome()
